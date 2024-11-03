@@ -27,4 +27,5 @@ urlpatterns = [
     path('price', views.price),
     path('pacientes', views.pacientesList),
     path('home', views.home),
+    path('datos_generales', views.datos_generales),
 ]
