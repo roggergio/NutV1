@@ -96,6 +96,10 @@
      .bd-mode-toggle .dropdown-menu .active .bi {
        display: block !important;
      }
+     #aside1 {
+    height: auto;; /* Hace que el aside ocupe toda la altura de la ventana */
+    overflow-y: auto; /* Activa la barra de desplazamiento vertical */
+}
    </style>
 
 
@@ -184,104 +188,204 @@
           <svg class="bi pe-none" width="24" height="24"><use xlink:href="#home"/></svg>
       </button>
   </div>
-  <h1 class="visually-hidden">Sidebars examples</h1>
 
   <!-- Primer Aside -->
-  <div id="aside1" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+  <div id="aside1" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" >
       <!-- Contenido del primer aside -->
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-          <span class="fs-4">Sidebar</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+          <span class="fs-4">Paciente</span>
       </a>
       <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                  Datos generales
-              </a>
-          </li>
+      <ul class="nav-link active navegacion__enlace">
+        <li>
+            <a href="#" class="nav-link active navegacion__enlace">
+              <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
+<path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+<path d="M9 14h.01"></path>
+<path d="M9 17h.01"></path>
+<path d="M12 16l1 1l3 -3"></path>
+</svg>
+              datos generales
+            </a>
+        </li>
+
           <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+  <path d="M12 5.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0"></path>
+  <path d="M12 21.368l5.095 -5.096a3.088 3.088 0 1 0 -4.367 -4.367l-.728 .727l-.728 -.727a3.088 3.088 0 1 0 -4.367 4.367l5.095 5.096z"></path>
+</svg>
                   Antecedentes personales
               </a>
           </li>
+
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M8 8v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path>
+<path d="M4 8m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+<path d="M10 14h4"></path>
+<path d="M12 12v4"></path>
+</svg>
                   Antecedentes Patológicos
               </a>
           </li>
           <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M9 3h6"></path>
+<path d="M13 9h1"></path>
+<path d="M10 3v3m-.268 3.736l-3.732 10.264a.7 .7 0 0 0 .5 1h11a.7 .7 0 0 0 .5 -1l-1.143 -3.142m-2.288 -6.294l-.569 -1.564v-6"></path>
+<path d="M3 3l18 18"></path>
+</svg>
                   Tóxicomanias y Alergias
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M9 15l-1 -3l4 -2l4 1h3.5"></path>
+<path d="M4 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+<path d="M12 6m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
+<path d="M12 17v-7"></path>
+<path d="M8 20h7l1 -4l4 -2"></path>
+<path d="M18 20h3"></path>
+</svg>
                   Antropometria
               </a>
           </li>
           <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                  Bascula Omron
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M5 21h14"></path>
+<path d="M6 18h2"></path>
+<path d="M7 18v3"></path>
+<path d="M9 11l3 3l6 -6l-3 -3z"></path>
+<path d="M10.5 12.5l-1.5 1.5"></path>
+<path d="M17 3l3 3"></path>
+<path d="M12 21a6 6 0 0 0 3.715 -10.712"></path>
+</svg>
+                  Bioimpedancia
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M6.1 15h11.8"></path>
+<path d="M14 3v7.342a6 6 0 0 1 1.318 10.658h-6.635a6 6 0 0 1 1.317 -10.66v-7.34h4z"></path>
+<path d="M9 3h6"></path>
+</svg>
                   Bioquimicos
               </a>
           </li>
           <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+  <path d="M14 12l0 .01"></path>
+  <path d="M10 12l0 .01"></path>
+  <path d="M12 10l0 .01"></path>
+  <path d="M12 14l0 .01"></path>
+  <path d="M4.5 12.5l8 -8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1 -7 -7"></path>
+</svg>
                   Medicamentos
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M8 18h-.011"></path>
+<path d="M12 18h-.011"></path>
+<path d="M16 18h-.011"></path>
+<path d="M4 3h16"></path>
+<path d="M5 3v17a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-17"></path>
+<path d="M14 7h-4"></path>
+<path d="M9 15h1"></path>
+<path d="M14 15h1"></path>
+<path d="M12 11v-4"></path>
+</svg>
                   Hábitos
               </a>
           </li>
           <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M12 12m-5 0a5 5 0 1 0 10 0a5 5 0 1 0 -10 0"></path>
+<path d="M12 7v-4"></path>
+<path d="M11 3h2"></path>
+<path d="M15.536 8.464l2.828 -2.828"></path>
+<path d="M17.657 4.929l1.414 1.414"></path>
+<path d="M17 12h4"></path>
+<path d="M21 11v2"></path>
+<path d="M15.535 15.536l2.829 2.828"></path>
+<path d="M19.071 17.657l-1.414 1.414"></path>
+<path d="M12 17v4"></path>
+<path d="M13 21h-2"></path>
+<path d="M8.465 15.536l-2.829 2.828"></path>
+<path d="M6.343 19.071l-1.413 -1.414"></path>
+<path d="M7 12h-4"></path>
+<path d="M3 13v-2"></path>
+<path d="M8.464 8.464l-2.828 -2.828"></path>
+<path d="M4.929 6.343l1.414 -1.413"></path>
+</svg>
                   R24
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M19.5 13.572l-7.5 7.428l-2.896 -2.868m-6.117 -8.104a5 5 0 0 1 9.013 -3.022a5 5 0 1 1 7.5 6.572"></path>
+<path d="M3 13h2l2 3l2 -6l1 3h3"></path>
+</svg>
                   Energía y actividad fisica
               </a>
           </li>
           <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M8 21h8a1 1 0 0 0 1 -1v-10a3 3 0 0 0 -3 -3h-4a3 3 0 0 0 -3 3v10a1 1 0 0 0 1 1z"></path>
+<path d="M10 14h4"></path>
+<path d="M12 12v4"></path>
+<path d="M10 7v-3a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v3"></path>
+</svg>
                   Macronutrientes
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M16 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+<path d="M8 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+<path d="M4 8l2.1 2.8a3 3 0 0 0 2.4 1.2h11.5"></path>
+<path d="M10 6h4"></path>
+<path d="M12 4v4"></path>
+<path d="M12 12v2l-2.5 2.5"></path>
+<path d="M14.5 16.5l-2.5 -2.5"></path>
+</svg>
                   Equivalentes
               </a>
           </li>
           <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+  <path d="M8 8v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path>
+  <path d="M4 8m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+  <path d="M10 14h4"></path>
+  <path d="M12 12v4"></path>
+</svg>
                   Recomendaciones Generales
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M8 4h-2l-3 10v2.5"></path>
+<path d="M16 4h2l3 10v2.5"></path>
+<path d="M10 16l4 0"></path>
+<path d="M17.5 16.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0"></path>
+<path d="M6.5 16.5m-3.5 0a3.5 3.5 0 1 0 7 0a3.5 3.5 0 1 0 -7 0"></path>
+</svg>
                   Vista del Paciente
               </a>
           </li>
