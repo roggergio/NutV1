@@ -96,6 +96,10 @@
      .bd-mode-toggle .dropdown-menu .active .bi {
        display: block !important;
      }
+     #aside1 {
+    height: auto;; /* Hace que el aside ocupe toda la altura de la ventana */
+    overflow-y: auto; /* Activa la barra de desplazamiento vertical */
+}
    </style>
 
 
@@ -184,53 +188,90 @@
           <svg class="bi pe-none" width="24" height="24"><use xlink:href="#home"/></svg>
       </button>
   </div>
-  <h1 class="visually-hidden">Sidebars examples</h1>
 
   <!-- Primer Aside -->
-  <div id="aside1" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+  <div id="aside1" class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" >
       <!-- Contenido del primer aside -->
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-          <span class="fs-4">Sidebar</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M575.8 255.5c0 18-15 32.1-32 32.1l-32 0 .7 160.2c0 2.7-.2 5.4-.5 8.1l0 16.2c0 22.1-17.9 40-40 40l-16 0c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1L416 512l-24 0c-22.1 0-40-17.9-40-40l0-24 0-64c0-17.7-14.3-32-32-32l-64 0c-17.7 0-32 14.3-32 32l0 64 0 24c0 22.1-17.9 40-40 40l-24 0-31.9 0c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2l-16 0c-22.1 0-40-17.9-40-40l0-112c0-.9 0-1.9 .1-2.8l0-69.7-32 0c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/></svg>
+          <span class="fs-4">Paciente</span>
       </a>
       <hr>
-      <ul class="nav nav-pills flex-column mb-auto">
+      <ul class="nav-link active navegacion__enlace">
         <li>
-            <a href="#" class="nav-link link-body-emphasis">
-
-                SMAE
+            <a href="#" class="nav-link active navegacion__enlace">
+              <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
+<path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
+<path d="M9 14h.01"></path>
+<path d="M9 17h.01"></path>
+<path d="M12 16l1 1l3 -3"></path>
+</svg>
+              SMAE
             </a>
         </li>
-          <li>
-              <a href="#" class="nav-link link-body-emphasis">
 
+          <li>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+  <path d="M12 5.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0"></path>
+  <path d="M12 21.368l5.095 -5.096a3.088 3.088 0 1 0 -4.367 -4.367l-.728 .727l-.728 -.727a3.088 3.088 0 1 0 -4.367 4.367l5.095 5.096z"></path>
+</svg>
                   SMAE RENAL
               </a>
           </li>
+
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M8 8v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path>
+<path d="M4 8m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
+<path d="M10 14h4"></path>
+<path d="M12 12v4"></path>
+</svg>
                   ENFERMEDADES
               </a>
           </li>
+
+          <li class="nav-item">
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M6.1 15h11.8"></path>
+<path d="M14 3v7.342a6 6 0 0 1 1.318 10.658h-6.635a6 6 0 0 1 1.317 -10.66v-7.34h4z"></path>
+<path d="M9 3h6"></path>
+</svg>
+                QUIMICA SANGUINEA
+              </a>
+          </li>
           <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
-                  MEDICAMENTOS
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+  <path d="M14 12l0 .01"></path>
+  <path d="M10 12l0 .01"></path>
+  <path d="M12 10l0 .01"></path>
+  <path d="M12 14l0 .01"></path>
+  <path d="M4.5 12.5l8 -8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1 -7 -7"></path>
+</svg>
+                  Medicamentos
               </a>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"/></svg>
-                QUIMICA SANGUÍNEA
-              </a>
-          </li>
-          <li>
-              <a href="#" class="nav-link link-body-emphasis">
-                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"/></svg>
+              <a href="#" class="nav-link active navegacion__enlace">
+                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
+<path d="M8 18h-.011"></path>
+<path d="M12 18h-.011"></path>
+<path d="M16 18h-.011"></path>
+<path d="M4 3h16"></path>
+<path d="M5 3v17a1 1 0 0 0 1 1h12a1 1 0 0 0 1 -1v-17"></path>
+<path d="M14 7h-4"></path>
+<path d="M9 15h1"></path>
+<path d="M14 15h1"></path>
+<path d="M12 11v-4"></path>
+</svg>
                   TAMIZAJE NUTRICIONAL
               </a>
           </li>
+        
 
 
       </ul>

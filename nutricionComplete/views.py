@@ -17,3 +17,16 @@ def home(request):
     return render(request, 'home.html')
 def datos_generales(request):
     return render(request, 'datosPaciente.html')
+
+def consultar(request):
+    return render(request, 'baseConsultar.html')
+
+def equivalentes(request):
+    return render(request, 'equivalentes.html')
+
+def macronutrientes(request):
+    return render(request, 'macronutrientes.html')
+def enfermedades(request):
+    return render(request, 'enfermedades.html')
+def habitos(request):
+    return render(request, 'habitos.html')

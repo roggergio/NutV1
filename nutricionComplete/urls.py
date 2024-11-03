@@ -28,4 +28,10 @@ urlpatterns = [
     path('pacientes', views.pacientesList),
     path('home', views.home),
     path('datos_generales', views.datos_generales),
+    path('consultar', views.consultar),
+    path('equivalentes', views.equivalentes),
+    path('macronutrientes', views.macronutrientes),
+    path('enfermedades', views.enfermedades),
+    path('habitos', views.habitos),
+
 ]
