@@ -30,3 +30,6 @@ def enfermedades(request):
     return render(request, 'enfermedades.html')
 def habitos(request):
     return render(request, 'habitos.html')
+
+def quimica_sanguinea(request):
+    return render(request, 'quimica_sanguinea.html')
