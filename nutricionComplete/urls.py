@@ -34,5 +34,9 @@ urlpatterns = [
     path('enfermedades', views.enfermedades, name='enfermedades'),
     path('habitos', views.habitos, name='habitos'),
     path('quimica_sanguinea', views.quimica_sanguinea, name='quimica_sanguinea'),
+    path('alergiasYAdicciones', views.alergiasYAdicciones, name='alergiasYAdicciones'),
+    path('bioquimicosPaciente', views.bioquimicosPaciente, name='bioquimicosPaciente'),
+    path('antecedentesPatologicos', views.antecedentesPatologicos, name='antecedentesPatologicos'),
+    path('antropometria', views.antropometria, name='antropometria'),
 
 ]

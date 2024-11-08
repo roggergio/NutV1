@@ -213,18 +213,9 @@
             </button>
         </li>
 
-          <li>
-              <a href="#" class="nav-link active navegacion__enlace">
-                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
-  <path d="M12 5.5m-2.5 0a2.5 2.5 0 1 0 5 0a2.5 2.5 0 1 0 -5 0"></path>
-  <path d="M12 21.368l5.095 -5.096a3.088 3.088 0 1 0 -4.367 -4.367l-.728 .727l-.728 -.727a3.088 3.088 0 1 0 -4.367 4.367l5.095 5.096z"></path>
-</svg>
-                  Antecedentes personales
-              </a>
-          </li>
-
+<button type="button" name="button">
           <li class="nav-item">
-              <a href="#" class="nav-link active navegacion__enlace">
+              <a href="{% url 'antecedentesPatologicos' %}" class="nav-link active navegacion__enlace">
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M8 8v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2"></path>
 <path d="M4 8m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
@@ -233,9 +224,11 @@
 </svg>
                   Antecedentes Patológicos
               </a>
+            </button>
           </li>
           <li>
-              <a href="#" class="nav-link active navegacion__enlace">
+            <button type="button" name="button">
+              <a href="{% url 'alergiasYAdicciones' %}" class="nav-link active navegacion__enlace">
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M9 3h6"></path>
 <path d="M13 9h1"></path>
@@ -244,9 +237,11 @@
 </svg>
                   Tóxicomanias y Alergias
               </a>
+              </button>
           </li>
           <li class="nav-item">
-              <a href="#" class="nav-link active navegacion__enlace">
+            <button type="button" name="button">
+              <a href="{% url 'antropometria' %}" class="nav-link active navegacion__enlace">
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M9 15l-1 -3l4 -2l4 1h3.5"></path>
 <path d="M4 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
@@ -257,23 +252,12 @@
 </svg>
                   Antropometria
               </a>
+              </button>
           </li>
-          <li>
-              <a href="#" class="nav-link active navegacion__enlace">
-                <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
-<path d="M5 21h14"></path>
-<path d="M6 18h2"></path>
-<path d="M7 18v3"></path>
-<path d="M9 11l3 3l6 -6l-3 -3z"></path>
-<path d="M10.5 12.5l-1.5 1.5"></path>
-<path d="M17 3l3 3"></path>
-<path d="M12 21a6 6 0 0 0 3.715 -10.712"></path>
-</svg>
-                  Bioimpedancia
-              </a>
-          </li>
+
           <li class="nav-item">
-              <a href="#" class="nav-link active navegacion__enlace">
+            <button type="button" name="button">
+              <a href="{% url 'bioquimicosPaciente' %}" class="nav-link active navegacion__enlace">
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M6.1 15h11.8"></path>
 <path d="M14 3v7.342a6 6 0 0 1 1.318 10.658h-6.635a6 6 0 0 1 1.317 -10.66v-7.34h4z"></path>
@@ -281,6 +265,7 @@
 </svg>
                   Bioquimicos
               </a>
+              </button>
           </li>
           <li>
               <a href="#" class="nav-link active navegacion__enlace">

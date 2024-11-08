@@ -33,3 +33,13 @@ def habitos(request):
 
 def quimica_sanguinea(request):
     return render(request, 'quimica_sanguinea.html')
+
+def alergiasYAdicciones(request):
+    return render(request, 'alergiasYAdicciones.html')
+
+def bioquimicosPaciente(request):
+    return render(request, 'bioquimicosPaciente.html')
+def antecedentesPatologicos(request):
+    return render(request, 'antecedentesPatologicos.html')
+def antropometria(request):
+    return render(request, 'antropometria.html')
