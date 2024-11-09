@@ -43,3 +43,5 @@ def antecedentesPatologicos(request):
     return render(request, 'antecedentesPatologicos.html')
 def antropometria(request):
     return render(request, 'antropometria.html')
+def medicamentos(request):
+    return render(request, 'medicamentos.html')
