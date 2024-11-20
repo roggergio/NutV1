@@ -38,11 +38,8 @@ urlpatterns = [
     path('bioquimicosPaciente', views.bioquimicosPaciente, name='bioquimicosPaciente'),
     path('antecedentesPatologicos', views.antecedentesPatologicos, name='antecedentesPatologicos'),
     path('antropometria', views.antropometria, name='antropometria'),
-<<<<<<< HEAD
     path('medicamentos', views.medicamentos, name='medicamentos'),
     path('r24', views.r24, name='r24'),
     path('energiaActividad', views.energiaActividad, name='energiaActividad'),
-=======
->>>>>>> 8ad416f37ae1d4a1cf2d2ecb72d4cd20a34c7408
 
 ]
