@@ -1,58 +1,87 @@
+
 {% extends 'base.html' %}
 
-{% block title %}Bioquímicos del Paciente{% endblock %}
+{% block title %}Lista de Pacientes{% endblock %}
 
 {% block content %}
 
-<form action="">
-  <h3>Medicamentos</h3>
-  <table id="medicamentosTable">
+<table>
+  <h3>alergias y toxicomanias</h3>
+  <thead>
+      <tr>
+          <th>Indicador</th>
+          <th>si/no</th>
+          <th colspan="2">frecuencia</th>
+      </tr>
+  </thead>
+  <tbody>
     <tr>
-      <th>Nombre del Fármaco</th>
-      <th>Dosis</th>
-      <th>Frecuencia</th>
-      <th>Duración del Tratamiento</th>
-      <th>Observaciones</th>
-    </tr>
-    <tr>
-      <td><input type="text" name="nombre_farmaco[]" required></td>
-      <td><input type="text" name="dosis[]" placeholder="e.g., 500 mg" required></td>
       <td>
-        <select name="frecuencia[]" required>
-          <option value="diario">Diario</option>
-          <option value="semanal">Semanal</option>
-          <option value="mensual">Mensual</option>
-          <option value="otra">Otra</option>
+        <p>alcohol</p>
+      </td>
+
+      <td>
+        <input type="checkbox" value="1">
+      </td>
+      <td>
+        <p><input type="number">veces</p>
+      </td>
+      <td>
+        <select name="" id="">
+          <option value="nunca">nunca</option>
+          <option value="diario">diario</option>
+          <option value="semana">semana</option>
+          <option value="mes">mes</option>
+          <option value="año">año</option>
+
         </select>
       </td>
-      <td><input type="text" name="duracion[]" placeholder="e.g., 2 semanas" required></td>
-      <td><input type="text" name="observaciones[]" placeholder="Opcional"></td>
     </tr>
-  </table>
-  <button type="button" onclick="addRow()">Añadir Medicamento</button>
-  <input type="submit" value="Guardar">
-</form>
-
-<script>
-  function addRow() {
-    const table = document.getElementById("medicamentosTable");
-    const newRow = table.insertRow();
-
-    newRow.innerHTML = `
-      <td><input type="text" name="nombre_farmaco[]" required></td>
-      <td><input type="text" name="dosis[]" placeholder="e.g., 500 mg" required></td>
+    <tr>
       <td>
-        <select name="frecuencia[]" required>
-          <option value="diario">Diario</option>
-          <option value="semanal">Semanal</option>
-          <option value="mensual">Mensual</option>
-          <option value="otra">Otra</option>
+        <p>tabaco</p>
+      </td>
+
+      <td>
+        <input type="checkbox" value="1">
+      </td>
+      <td>
+        <p><input type="number">veces</p>
+      </td>
+      <td>
+        <select name="" id="">
+          <option value="nunca">nunca</option>
+          <option value="diario">diario</option>
+          <option value="semana">semana</option>
+          <option value="mes">mes</option>
+          <option value="año">año</option>
+
+        </select>
+      </tr>
+    <tr>
+
+      <td>
+        <p><input type="text">otro</p>
+      </td>
+
+      <td>
+        <input type="checkbox" value="1">
+      </td>
+      <td>
+        <p><input type="number">veces</p>
+      </td>
+      <td>
+        <select name="" id="">
+          <option value="nunca">nunca</option>
+          <option value="diario">diario</option>
+          <option value="semana">semana</option>
+          <option value="mes">mes</option>
+          <option value="año">año</option>
+
         </select>
       </td>
-      <td><input type="text" name="duracion[]" placeholder="e.g., 2 semanas" required></td>
-      <td><input type="text" name="observaciones[]" placeholder="Opcional"></td>
-    `;
-  }
-</script>
+    </tr>
+  </tbody>
+</table>
 
 {% endblock %}
