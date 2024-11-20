@@ -39,5 +39,7 @@ urlpatterns = [
     path('antecedentesPatologicos', views.antecedentesPatologicos, name='antecedentesPatologicos'),
     path('antropometria', views.antropometria, name='antropometria'),
     path('medicamentos', views.medicamentos, name='medicamentos'),
+    path('r24', views.r24, name='r24'),
+    path('energiaActividad', views.energiaActividad, name='energiaActividad'),
 
 ]

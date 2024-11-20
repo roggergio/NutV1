@@ -45,3 +45,7 @@ def antropometria(request):
     return render(request, 'antropometria.html')
 def medicamentos(request):
     return render(request, 'medicamentos.html')
+def r24(request):
+    return render(request, 'r24.html')
+def energiaActividad(request):
+    return render(request, 'energiaActividad.html')
