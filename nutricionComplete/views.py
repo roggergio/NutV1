@@ -49,3 +49,5 @@ def r24(request):
     return render(request, 'r24.html')
 def energiaActividad(request):
     return render(request, 'energiaActividad.html')
+def medicamentosPaciente(request):
+    return render(request, 'medicamentosPaciente.html')
