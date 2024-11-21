@@ -167,7 +167,7 @@
       <label for="floatingPassword">Contraseña</label>
     </div>
     <div >
-      <a class="btn btn-primary btn-lg" href=""> smae 2014</a>
+      <a class="btn btn-primary btn-lg" href="{% url 'pacientes' %}"> iniciar sesion</a>
     </div>
 
     <div class="form-check text-start my-3">
@@ -176,7 +176,7 @@
         recuerdame
       </label>
     </div>
-    <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
+    <a class="btn btn-primary w-100 py-2" type="submit" href="{% url 'registroNutri' %}">registrarme</a>
     <p class="mt-5 mb-3 text-body-secondary">Nutrición 360</p>
   </form>
 </main>

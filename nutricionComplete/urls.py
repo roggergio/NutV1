@@ -21,6 +21,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login, name='login'),
+    path('registroNutri', views.registroNutri, name='registroNutri'),
     path('navBar', views.navBar),
     path('aside_1', views.aside_1),
     path('aside_2', views.aside_2),
@@ -30,6 +31,7 @@ urlpatterns = [
     path('datos_generales', views.datos_generales, name="datos_generales"),
     path('consultar', views.consultar, name='consultar'),
     path('equivalentes', views.equivalentes, name= 'equivalentes'),
+    path('equivalentesRenal', views.equivalentesRenal, name= 'equivalentesRenal'),
     path('macronutrientes', views.macronutrientes, name='macronutrientes'),
     path('enfermedades', views.enfermedades, name='enfermedades'),
     path('habitos', views.habitos, name='habitos'),

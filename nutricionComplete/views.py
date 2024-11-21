@@ -1,6 +1,8 @@
 from django.shortcuts import render
 def login(request):
     return render(request, 'login.html')
+def registroNutri(request):
+    return render(request, 'registroNutri.html')
 def aside_1(request):
     return render(request, 'aside_1.html')
 def aside_2(request):
@@ -23,6 +25,8 @@ def consultar(request):
 
 def equivalentes(request):
     return render(request, 'equivalentes.html')
+def equivalentesRenal(request):
+    return render(request, 'equivalentesRenal.html')
 
 def macronutrientes(request):
     return render(request, 'macronutrientes.html')
