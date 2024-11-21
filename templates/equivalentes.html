@@ -20,7 +20,7 @@
         <tr>
             <td colspan="2">verduras</td>
 
-            <td><input type="number" oninput="verduras(this)" min="0"></td>
+            <td><input type="number" oninput="verduras()" min="0" id = "equiVer"></td>
             <td id="v_ene">...</td>
             <td id="v_hdc">...</td>
             <td id="v_pro">...</td>
@@ -31,7 +31,7 @@
 
         <tr>
             <td colspan="2">frutas</td>
-            <td><input type="number" oninput="frutas(this)" min="0"></td>
+            <td><input type="number" oninput="frutas()" min="0" id = "equiFru"></td>
             <td id="f_ene">...</td>
             <td id="f_hdc">...</td>
             <td id="f_pro">...</td>
@@ -42,7 +42,7 @@
         <tr>
             <td rowspan="2">cereales</td>
             <td><p>sin grasa</p></td>
-            <td><input type="number" oninput="cereales_sg(this)" min="0"></td>
+            <td><input type="number" oninput="cereales_sg()" min="0" id = "equiCsg"></td>
             <td id="csg_ene">...</td>
             <td id="csg_hdc">...</td>
             <td id="csg_pro">...</td>
@@ -53,7 +53,7 @@
         <tr>
 
             <td><p>con grasa</p></td>
-            <td><input type="number" oninput="cereales_cg(this)" min="0"></td>
+            <td><input type="number" oninput="cereales_cg()" min="0" id = "equiCg"></td>
             <td id="ccg_ene">...</td>
             <td id="ccg_hdc">...</td>
             <td id="ccg_pro">...</td>
@@ -62,7 +62,7 @@
         </tr>
         <tr>
             <td colspan="2">leguminosas</td>
-            <td><input type="number" oninput="leguminosas(this)" min="0"></td>
+            <td><input type="number" oninput="leguminosas()" min="0" id = "equiLeg"></td>
             <td id="leg_ene">...</td>
             <td id="leg_hdc">...</td>
             <td id="leg_pro">...</td>
@@ -72,7 +72,7 @@
         <tr>
             <td rowspan="4">alimento de origen animal</td>
             <td><p>muy bajo en grasa</p></td>
-            <td><input type="number" oninput="aoa_mb(this)" min="0"></td>
+            <td><input type="number" oninput="aoa_mb()" min="0" id = "equiAoa"></td>
             <td id="aoamb_ene">...</td>
             <td id="aoamb_hdc">...</td>
             <td id="aoamb_pro">...</td>
@@ -81,7 +81,7 @@
         </tr>
         <tr>
             <td><p>bajo en grasa en grasa</p></td>
-            <td><input type="number" oninput="aoa_b(this)" min="0"></td>
+            <td><input type="number" oninput="aoa_b()" min="0" id = "equiAoaB"></td>
             <td id="aoab_ene">...</td>
             <td id="aoab_hdc">...</td>
             <td id="aoab_pro">...</td>
@@ -90,7 +90,7 @@
         </tr>
         <tr>
             <td><p>moderado en grasa</p></td>
-            <td><input type="number" oninput="aoa_m(this)" min="0"></td>
+            <td><input type="number" oninput="aoa_m()" min="0" id = "equiAoaM"></td>
             <td id="aoam_ene">...</td>
             <td id="aoam_hdc">...</td>
             <td id="aoam_pro">...</td>
@@ -100,7 +100,7 @@
 
         <tr>
             <td><p>alto en grasa</p></td>
-            <td><input type="number" oninput="aoa_a(this)" min="0"></td>
+            <td><input type="number" oninput="aoa_a()" min="0" id = "equiAoaA"></td>
             <td id="aoaa_ene">...</td>
             <td id="aoaa_hdc">...</td>
             <td id="aoaa_pro">...</td>
@@ -110,7 +110,7 @@
         <tr>
             <td rowspan="4">leche </td>
             <td><p>descremada</p></td>
-            <td><input type="number" oninput="lechedes(this)" min="0"></td>
+            <td><input type="number" oninput="lechedes()" min="0" id = "equiLecheDes"></td>
             <td id="lechedes_ene">...</td>
             <td id="lechedes_hdc">...</td>
             <td id="lechedes_pro">...</td>
@@ -119,7 +119,7 @@
         </tr>
         <tr>
             <td><p>semidescremada</p></td>
-            <td><input type="number" oninput="lechesem(this)" min="0"></td>
+            <td><input type="number" oninput="lechesem()" min="0" id = "equiLecheSem"></td>
             <td id="lechesem_ene">...</td>
             <td id="lechesem_hdc">...</td>
             <td id="lechesem_pro">...</td>
@@ -129,7 +129,7 @@
         <tr>
 
             <td><p>entera</p></td>
-            <td><input type="number" oninput="lecheent(this)" min="0"></td>
+            <td><input type="number" oninput="lecheent()" min="0" id = "equiLecheEnt"></td>
             <td id="lecheent_ene">...</td>
             <td id="lecheent_hdc">...</td>
             <td id="lecheent_pro">...</td>
@@ -138,7 +138,7 @@
         </tr>
         <tr>
             <td><p>con azúcar</p></td>
-            <td><input type="number" oninput="lechecaz(this)" min="0"></td>
+            <td><input type="number" oninput="lechecaz()" min="0" id = "equiLecheCaz"></td>
             <td id="lechecaz_ene">...</td>
             <td id="lechecaz_hdc">...</td>
             <td id="lechecaz_pro">...</td>
@@ -149,7 +149,7 @@
         <tr>
             <td rowspan="2">aceites y grasas</td>
             <td><p>sin proteina</p></td>
-            <td><input type="number" oninput="aceitessp(this)" min="0"></td>
+            <td><input type="number" oninput="aceitessp()" min="0" id = "equiAceitesSp"></td>
             <td id="aceitesp_ene">...</td>
             <td id="aceitesp_hdc">...</td>
             <td id="aceitesp_pro">...</td>
@@ -158,7 +158,7 @@
         </tr>
         <tr>
             <td><p>con proteina</p></td>
-            <td><input type="number" oninput="aceitescp(this)" min="0"></td>
+            <td><input type="number" oninput="aceitescp()" min="0" id = "equiAceitesCp"></td>
             <td id="aceitecp_ene">...</td>
             <td id="aceitecp_hdc">...</td>
             <td id="aceitecp_pro">...</td>
@@ -169,7 +169,7 @@
         <tr>
             <td rowspan="2">azúcares</td>
             <td><p>sin grasa</p></td>
-            <td><input type="number" oninput="azucarsg(this)" min="0"></td>
+            <td><input type="number" oninput="azucarsg()" min="0" id = "equiAzucarSg"></td>
             <td id="azucarsg_ene">...</td>
             <td id="azucarsg_hdc">...</td>
             <td id="azucarsg_pro">...</td>
@@ -178,7 +178,7 @@
         </tr>
         <tr>
             <td><p>con grasa</p></td>
-            <td><input type="number" oninput="azucarcg(this)" min="0" ></td>
+            <td><input type="number" oninput="azucarcg()" min="0" id = "equiAzucarCg"></td>
             <td id="azucarcg_ene">...</td>
             <td id="azucarcg_hdc">...</td>
             <td id="azucarcg_pro">...</td>
@@ -187,20 +187,20 @@
         </tr>
         <tr>
             <td colspan="2"><p>alcohol</p></td>
-            <td><input type="number" min="0"></td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
+            <td><input type="number" oninput="alcohol()" min="0" id = "equiAlcohol"></td>
+            <td id="alcohol_ene">...</td>
+            <td id="alcohol_hdc">...</td>
+            <td id="alcohol_pro">...</td>
+            <td id="alcohol_lip">...</td>
 
         </tr>
 
       <tr>
             <td colspan="3">total</td>
-            <td id="totalene">...</td>
-            <td>...</td>
-            <td>...</td>
-            <td>...</td>
+            <td id="total_ene">...</td>
+            <td id="total_hdc">...</td>
+            <td id="total_pro">...</td>
+            <td id="total_lip">...</td>
 
 
         </tr>
@@ -435,4 +435,298 @@
     </tbody>
 </table>
 </main>
+
+<script>
+    
+    function verduras(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiVer").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("v_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("v_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("v_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("v_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function frutas(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiFru").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("f_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("f_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("f_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("f_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function cereales_sg(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiCsg").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("csg_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("csg_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("csg_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("csg_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function cereales_cg(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiCg").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("ccg_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("ccg_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("ccg_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("ccg_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function leguminosas(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiLeg").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("leg_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("leg_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("leg_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("leg_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function aoa_mb(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAoa").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("aoamb_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("aoamb_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("aoamb_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("aoamb_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function aoa_b(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAoaB").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("aoab_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("aoab_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("aoab_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("aoab_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function aoa_m(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAoaM").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("aoam_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("aoam_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("aoam_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("aoam_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function aoa_a(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAoaA").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("aoaa_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("aoaa_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("aoaa_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("aoaa_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function lechedes(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiLecheDes").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("lechedes_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("lechedes_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("lechedes_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("lechedes_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function lechesem(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiLecheSem").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("lechesem_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("lechesem_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("lechesem_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("lechesem_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function lecheent(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiLecheEnt").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("lecheent_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("lecheent_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("lecheent_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("lecheent_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function lechecaz(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiLecheCaz").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("lechecaz_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("lechecaz_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("lechecaz_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("lechecaz_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function aceitessp(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAceitesSp").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("aceitesp_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("aceitesp_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("aceitesp_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("aceitesp_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function aceitescp(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAceitesCp").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("aceitecp_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("aceitecp_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("aceitecp_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("aceitecp_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function azucarsg(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAzucarSg").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("azucarsg_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("azucarsg_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("azucarsg_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("azucarsg_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function azucarcg(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAzucarCg").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("azucarcg_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("azucarcg_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("azucarcg_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("azucarcg_lip").textContent = lipidos.toFixed(2);
+    }
+
+    function alcohol(){
+        const equivalentesTotales = parseFloat(document.getElementById("equiAlcohol").value) || 0;
+
+        const energia = (equivalentesTotales * 5);
+        document.getElementById("alcohol_ene").textContent = energia.toFixed(2);
+
+        const hdc = (equivalentesTotales * 4);
+        document.getElementById("alcohol_hdc").textContent = hdc.toFixed(2);
+        
+        const proteina = (equivalentesTotales * 3);
+        document.getElementById("alcohol_pro").textContent = proteina.toFixed(2);
+
+        const lipidos = (equivalentesTotales * 2);
+        document.getElementById("alcohol_lip").textContent = lipidos.toFixed(2);
+    }
+
+</script>
+
+
 {% endblock %}
