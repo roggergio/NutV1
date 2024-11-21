@@ -23,6 +23,8 @@ def consultar(request):
 
 def equivalentes(request):
     return render(request, 'equivalentes.html')
+def equivalentesRenal(request):
+    return render(request, 'equivalentesRenal.html')
 
 def macronutrientes(request):
     return render(request, 'macronutrientes.html')

@@ -30,6 +30,7 @@ urlpatterns = [
     path('datos_generales', views.datos_generales, name="datos_generales"),
     path('consultar', views.consultar, name='consultar'),
     path('equivalentes', views.equivalentes, name= 'equivalentes'),
+    path('equivalentesRenal', views.equivalentesRenal, name= 'equivalentesRenal'),
     path('macronutrientes', views.macronutrientes, name='macronutrientes'),
     path('enfermedades', views.enfermedades, name='enfermedades'),
     path('habitos', views.habitos, name='habitos'),
