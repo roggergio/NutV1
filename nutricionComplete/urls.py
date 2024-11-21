@@ -22,10 +22,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.login, name='login'),
     path('registroNutri', views.registroNutri, name='registroNutri'),
+    path('price', views.price, name='price'),
+    path('carrito', views.carrito, name='carrito'),
     path('navBar', views.navBar),
     path('aside_1', views.aside_1),
     path('aside_2', views.aside_2),
-    path('price', views.price, name='price'),
+
     path('pacientes', views.pacientesList, name='pacientes'),
     path('home', views.home, name='home'),
     path('datos_generales', views.datos_generales, name="datos_generales"),
