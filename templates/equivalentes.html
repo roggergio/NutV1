@@ -19,8 +19,7 @@
 
         <tr>
             <td colspan="2">verduras</td>
-
-            <td><input type="number" oninput="verduras()" min="0" id = "equiVer"></td>
+            <td><input type="number" oninput="verduras('equiVer', 'v_ene', 'v_hdc', 'v_pro', 'v_lip', { energia: 25, hdc: 4, proteina: 2, lipidos: 0 })" min="0" id="equiVer"></td>
             <td id="v_ene">...</td>
             <td id="v_hdc">...</td>
             <td id="v_pro">...</td>
@@ -31,7 +30,7 @@
 
         <tr>
             <td colspan="2">frutas</td>
-            <td><input type="number" oninput="frutas()" min="0" id = "equiFru"></td>
+            <td><input type="number" oninput="frutas('equiFru', 'f_ene', 'f_hdc', 'f_pro', 'f_lip', { energia: 60, hdc: 15, proteina: 0, lipidos: 0 })" min="0" id="equiFru"></td>
             <td id="f_ene">...</td>
             <td id="f_hdc">...</td>
             <td id="f_pro">...</td>
@@ -436,40 +435,40 @@
 
 <script>
     
-    function verduras(){
-        const equivalentesTotales = parseFloat(document.getElementById("equiVer").value) || 0;
+    function verduras(inputId, energiaId, hdcId, proteinaId, lipidosId, multiplicadores) {
+    const equivalentesTotales = parseFloat(document.getElementById(inputId).value) || 0;
 
-        const energia = (equivalentesTotales * 25);
-        document.getElementById("v_ene").textContent = energia.toFixed(2);
+    const energia = equivalentesTotales * multiplicadores.energia;
+    document.getElementById(energiaId).textContent = energia.toFixed(2);
 
-        const hdc = (equivalentesTotales * 4);
-        document.getElementById("v_hdc").textContent = hdc.toFixed(2);
-        
-        const proteina = (equivalentesTotales * 2);
-        document.getElementById("v_pro").textContent = proteina.toFixed(2);
+    const hdc = equivalentesTotales * multiplicadores.hdc;
+    document.getElementById(hdcId).textContent = hdc.toFixed(2);
 
-        const lipidos = (equivalentesTotales * 0);
-        document.getElementById("v_lip").textContent = lipidos.toFixed(2);
+    const proteina = equivalentesTotales * multiplicadores.proteina;
+    document.getElementById(proteinaId).textContent = proteina.toFixed(2);
 
-        totales();
+    const lipidos = equivalentesTotales * multiplicadores.lipidos;
+    document.getElementById(lipidosId).textContent = lipidos.toFixed(2);
+
+    totales();
     }
 
-    function frutas(){
-        const equivalentesTotales = parseFloat(document.getElementById("equiFru").value) || 0;
+    function frutas(inputId, energiaId, hdcId, proteinaId, lipidosId, multiplicadores) {
+    const equivalentesTotales = parseFloat(document.getElementById(inputId).value) || 0;
 
-        const energia = (equivalentesTotales * 60);
-        document.getElementById("f_ene").textContent = energia.toFixed(2);
+    const energia = equivalentesTotales * multiplicadores.energia;
+    document.getElementById(energiaId).textContent = energia.toFixed(2);
 
-        const hdc = (equivalentesTotales * 15);
-        document.getElementById("f_hdc").textContent = hdc.toFixed(2);
-        
-        const proteina = (equivalentesTotales * 0);
-        document.getElementById("f_pro").textContent = proteina.toFixed(2);
+    const hdc = equivalentesTotales * multiplicadores.hdc;
+    document.getElementById(hdcId).textContent = hdc.toFixed(2);
 
-        const lipidos = (equivalentesTotales * 0);
-        document.getElementById("f_lip").textContent = lipidos.toFixed(2);
+    const proteina = equivalentesTotales * multiplicadores.proteina;
+    document.getElementById(proteinaId).textContent = proteina.toFixed(2);
 
-        totales();
+    const lipidos = equivalentesTotales * multiplicadores.lipidos;
+    document.getElementById(lipidosId).textContent = lipidos.toFixed(2);
+
+    totales();
     }
 
     function cereales(inputId, energiaId, hdcId, proteinaId, lipidosId, multiplicadores) {
