@@ -59,7 +59,7 @@
         </tr>
         <tr>
             <td colspan="2">leguminosas</td>
-            <td><input type="number" oninput="leguminosas()" min="0" id = "equiLeg"></td>
+            <td><input type="number" oninput="leguminosas('equiLeg', 'leg_ene', 'leg_hdc', 'leg_pro', 'leg_lip', { energia: 120, hdc: 20, proteina: 8, lipidos: 1 })" min="0" id="equiLeg"></td>
             <td id="leg_ene">...</td>
             <td id="leg_hdc">...</td>
             <td id="leg_pro">...</td>
@@ -185,6 +185,7 @@
         <tr>
             <td colspan="2"><p>alcohol</p></td>
             <td><input type="number" oninput="alcohol()" min="0" id = "equiAlcohol"></td>
+            <td><input type="number" oninput="alcohol('equiAlcohol', 'alcohol_ene', 'alcohol_hdc', 'alcohol_pro', 'alcohol_lip', { energia: 140, hdc: 20, proteina: 0, lipidos: 0 })" min="0" id="equiAlcohol"></td>
             <td id="alcohol_ene">...</td>
             <td id="alcohol_hdc">...</td>
             <td id="alcohol_pro">...</td>
@@ -489,22 +490,22 @@
     totales();
     }
 
-    function leguminosas(){
-        const equivalentesTotales = parseFloat(document.getElementById("equiLeg").value) || 0;
+    function leguminosas(inputId, energiaId, hdcId, proteinaId, lipidosId, multiplicadores) {
+    const equivalentesTotales = parseFloat(document.getElementById(inputId).value) || 0;
 
-        const energia = (equivalentesTotales * 5);
-        document.getElementById("leg_ene").textContent = energia.toFixed(2);
+    const energia = equivalentesTotales * multiplicadores.energia;
+    document.getElementById(energiaId).textContent = energia.toFixed(2);
 
-        const hdc = (equivalentesTotales * 4);
-        document.getElementById("leg_hdc").textContent = hdc.toFixed(2);
-        
-        const proteina = (equivalentesTotales * 3);
-        document.getElementById("leg_pro").textContent = proteina.toFixed(2);
+    const hdc = equivalentesTotales * multiplicadores.hdc;
+    document.getElementById(hdcId).textContent = hdc.toFixed(2);
 
-        const lipidos = (equivalentesTotales * 2);
-        document.getElementById("leg_lip").textContent = lipidos.toFixed(2);
+    const proteina = equivalentesTotales * multiplicadores.proteina;
+    document.getElementById(proteinaId).textContent = proteina.toFixed(2);
 
-        totales();
+    const lipidos = equivalentesTotales * multiplicadores.lipidos;
+    document.getElementById(lipidosId).textContent = lipidos.toFixed(2);
+
+    totales();
     }
 
     function aoa(inputId, energiaId, hdcId, proteinaId, lipidosId, multiplicadores) {
@@ -579,22 +580,22 @@
     totales();
     }
 
-    function alcohol(){
-        const equivalentesTotales = parseFloat(document.getElementById("equiAlcohol").value) || 0;
+    function alcohol(inputId, energiaId, hdcId, proteinaId, lipidosId, multiplicadores) {
+    const equivalentesTotales = parseFloat(document.getElementById(inputId).value) || 0;
 
-        const energia = (equivalentesTotales * 140);
-        document.getElementById("alcohol_ene").textContent = energia.toFixed(2);
+    const energia = equivalentesTotales * multiplicadores.energia;
+    document.getElementById(energiaId).textContent = energia.toFixed(2);
 
-        const hdc = (equivalentesTotales * 20);
-        document.getElementById("alcohol_hdc").textContent = hdc.toFixed(2);
-        
-        const proteina = (equivalentesTotales * 0);
-        document.getElementById("alcohol_pro").textContent = proteina.toFixed(2);
+    const hdc = equivalentesTotales * multiplicadores.hdc;
+    document.getElementById(hdcId).textContent = hdc.toFixed(2);
 
-        const lipidos = (equivalentesTotales * 0);
-        document.getElementById("alcohol_lip").textContent = lipidos.toFixed(2);
+    const proteina = equivalentesTotales * multiplicadores.proteina;
+    document.getElementById(proteinaId).textContent = proteina.toFixed(2);
 
-        totales();
+    const lipidos = equivalentesTotales * multiplicadores.lipidos;
+    document.getElementById(lipidosId).textContent = lipidos.toFixed(2);
+
+    totales();
     }
 
     function totales() {
