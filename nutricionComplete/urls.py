@@ -46,5 +46,6 @@ urlpatterns = [
     path('medicamentosPaciente', views.medicamentosPaciente, name='medicamentosPaciente'),
     path('r24', views.r24, name='r24'),
     path('energiaActividad', views.energiaActividad, name='energiaActividad'),
+    path('tiemposComida', views.tiemposComida, name='tiemposComida'),
 
 ]

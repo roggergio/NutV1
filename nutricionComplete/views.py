@@ -59,3 +59,5 @@ def energiaActividad(request):
     return render(request, 'energiaActividad.html')
 def medicamentosPaciente(request):
     return render(request, 'medicamentosPaciente.html')
+def tiemposComida(request):
+    return render(request, 'tiemposComida.html')
