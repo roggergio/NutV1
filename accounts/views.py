@@ -11,7 +11,7 @@ from django.utils.encoding import force_bytes
 from django.core.mail import EmailMessage
 
 
-import requests
+
 # Create your views here.
 def register(request):
     form = RegistrationForm()
