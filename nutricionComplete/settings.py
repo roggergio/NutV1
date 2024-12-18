@@ -70,6 +70,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'nutricionComplete.wsgi.application'
+AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Database
@@ -121,6 +122,20 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS =['nutricionComplete/static',
 ]
+
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR : 'danger',
+}
+# ingresa al siguiente enlace de google para continuar
+#https://support.google.com/accounts/answer/185833?hl=es
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'roggergio@gmail.com'
+EMAIL_HOST_PASSWORD = 'glle wrjx cnqc lrko'
+EMAIL_USE_TLS = True
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
