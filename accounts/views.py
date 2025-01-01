@@ -16,7 +16,7 @@ from django.core.mail import EmailMessage
 def register(request):
     form = RegistrationForm()
     if request.method == 'POST':
-        form =RegistrationForm(request.POST)
+        form = RegistrationForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
@@ -25,33 +25,38 @@ def register(request):
             password = form.cleaned_data['password']
 
             username = email.split("@")[0]
-            user = Account.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=username, password=password )
+            user = Account.objects.create_user(
+                first_name=first_name,
+                last_name=last_name,
+                email=email,
+                username=username,
+                password=password
+            )
             user.phone_number = phone_number
+            user.is_active = False  # Asegúrate de que el usuario no esté activo hasta que verifique el email
             user.save()
 
-
+            # Enviar email de activación
             current_site = get_current_site(request)
-            mail_subject = 'Por favor activa tu cuenta en Rogger Gio'
+            mail_subject = 'Por favor activa tu cuenta en Nutrición 360'
             body = render_to_string('accounts/account_verification_email.html', {
                 'user': user,
                 'domain': current_site,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)), #transforma el valor a una lista de caracteres como: vbfevnfeiabvn
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': default_token_generator.make_token(user),
             })
-
             to_email = email
             send_email = EmailMessage(mail_subject, body, to=[to_email])
             send_email.send()
 
-
-            #messages.success(request, 'Se registro el usuario exitosamente')
-
-            return redirect('/accounts/login/?command=verification&email='+email)
+            # Notificar al usuario que verifique su email
+            messages.success(request, 'Tu cuenta ha sido creada. Por favor, verifica tu email para activarla.')
+            return redirect('login')  # Puedes redirigir a una página de notificación si prefieres
 
     context = {
         'form': form
     }
-    return render(request,'accounts/register.html', context)
+    return render(request, 'accounts/register.html', context)
 
 def login(request):
     if request.method == 'POST':
@@ -121,7 +126,7 @@ def forgotPassword(request):
             to_email = email
             send_email = EmailMessage(mail_subject, body, to=[to_email])
             send_email.send()
-            messages.success(request, 'un email fue enviado a tu bandeja de entrada para resetear tu password')
+            messages.success(request, 'Si el correo existe, se enviará un enlace para restablecer la contraseña.')
             return redirect('login')
         else:
             messages.error(request, 'La cuenta de usuario no existe')

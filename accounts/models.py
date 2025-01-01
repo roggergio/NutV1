@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.validators import MinLengthValidator
+from django.core.validators import RegexValidator
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 class MyAccountManager(BaseUserManager):
@@ -41,8 +43,11 @@ class Account(AbstractBaseUser):
     )
     last_name = models.CharField(max_length=50)
     username = models.CharField(max_length=50, unique=True)
-    email = models.CharField(max_length=100, unique=True)
-    phone_number = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100, unique=True)
+    phone_number = models.CharField(
+    max_length=10,
+    validators=[RegexValidator(regex=r'^\+?1?\d{9,11}$', message="El número debe tener entre 9 y 15 dígitos y puede incluir '+' al inicio.")]
+)
 
                                             #campos atributos de django
     # fecha
