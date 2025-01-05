@@ -65,18 +65,14 @@ def login(request):
 
         user = auth.authenticate(email=email, password=password)
         if user is not None:
-
-
             auth.login(request, user)
-            messages.success(request,'Has iniciado sesión exitosamente')
-
-
+            messages.success(request, 'Has iniciado sesión exitosamente')
+            return redirect('home')  # Redirige al home después de iniciar sesión
         else:
-            messages.error(request, ' Las credenciales son incorrectas')
+            messages.error(request, 'Las credenciales son incorrectas')
             return redirect('login')
 
-    return render(request,'accounts/login.html')
-
+    return render(request, 'accounts/login.html')
 @login_required(login_url='login')
 def logout(request):
     auth.logout(request)
@@ -168,3 +164,6 @@ def resetPassword(request):
             return redirect('resetPassword')
     else:
         return render(request, 'accounts/resetPassword.html')
+
+def home(request):
+    return render(request, 'accounts/home.html')
