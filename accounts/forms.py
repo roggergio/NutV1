@@ -3,7 +3,6 @@ from .models import Account
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
-
 class RegistrationForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Ingrese Password',
@@ -20,7 +19,6 @@ class RegistrationForm(forms.ModelForm):
             'placeholder': 'Ingrese teléfono (10 dígitos)',
             'class': 'form-control',
             'maxlength': '10',
-            'minlength': '10',
             'type': 'number',
         }),
         validators=[
@@ -44,7 +42,6 @@ class RegistrationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super(RegistrationForm, self).__init__(*args, **kwargs)
-
         self.fields['first_name'].widget.attrs['placeholder'] = 'Ingrese nombre'
         self.fields['last_name'].widget.attrs['placeholder'] = 'Ingrese apellidos'
         self.fields['phone_number'].widget.attrs['placeholder'] = 'Ingrese teléfono'
@@ -52,7 +49,7 @@ class RegistrationForm(forms.ModelForm):
         for field in self.fields:
             self.fields[field].widget.attrs['class'] = 'form-control'
 
-    def validate_password_strength(password):
+    def validate_password_strength(self, password):
         if len(password) < 8:
             raise ValidationError('La contraseña debe tener al menos 8 caracteres.')
         if not any(char.isdigit() for char in password):
