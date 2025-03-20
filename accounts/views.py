@@ -9,6 +9,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.encoding import force_bytes
 from django.core.mail import EmailMessage
+from django.urls import reverse
 
 
 
@@ -41,7 +42,7 @@ def register(request):
             mail_subject = 'Por favor activa tu cuenta en Nutrición 360'
             body = render_to_string('accounts/account_verification_email.html', {
                 'user': user,
-                'domain': current_site,
+                'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': default_token_generator.make_token(user),
             })
@@ -50,12 +51,12 @@ def register(request):
             send_email.send()
 
             # Notificar al usuario que verifique su email
-            messages.success(request, 'Tu cuenta ha sido creada. Por favor, verifica tu email para activarla.')
-            return redirect('login')  # Puedes redirigir a una página de notificación si prefieres
+            messages.success(request, 'Tu cuenta ha sido creada. Verifica tu email para activarla.')
+            return redirect('login')
+        else:
+            messages.error(request, 'Corrige los errores en el formulario.')
 
-    context = {
-        'form': form
-    }
+    context = {'form': form}
     return render(request, 'accounts/register.html', context)
 
 def login(request):
@@ -67,7 +68,9 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'Has iniciado sesión exitosamente')
-            return redirect('home')  # Redirige al home después de iniciar sesión
+
+            # Redirigir al usuario autenticado a la lista de pacientes
+            return redirect(reverse('lista_pacientes'))  # Asegúrate de que 'lista_pacientes' está en pacientes/urls.py
         else:
             messages.error(request, 'Las credenciales son incorrectas')
             return redirect('login')
