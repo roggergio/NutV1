@@ -8,4 +8,22 @@
     <li class="navegacion__enlace"><a href="#">Ayuda</a></li>
     <li class="navegacion__enlace"><a href="#">Acerca de</a></li>
   </ul>
+  {% if user.id is None %}
+
+  <div class="widget-header">
+    <small class="title text-muted">Bienvenido visitante!</small>
+    <div>
+      <a href="{% url 'login' %}">Login</a> <span class="dark-transp"> | </span>
+      <a href="{% url 'register' %}"> Registrar</a>
+    </div>
+  </div>
+{% else %}
+  <div class="widget-header">
+    <small class="title text-muted">Bienvenido {{user.first_name}}!</small>
+    <div>
+      <a href="{% url 'dashboard' %}">Dashboard</a> <span class="dark-transp"> | </span>
+      <a href="{% url 'logout' %}"> Salir sesion</a>
+    </div>
+  </div>
+{% endif %}
 </nav>
