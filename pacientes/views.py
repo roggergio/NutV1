@@ -3,11 +3,28 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Paciente
 from .forms import PacienteForm
+from django.db.models import Q
 
 @login_required
 def lista_pacientes(request):
-    pacientes = Paciente.objects.filter(nutriologo=request.user)
-    return render(request, 'pacientes/lista_pacientes.html', {'pacientes': pacientes})
+    query = request.GET.get('q')
+    if query:
+        pacientes = Paciente.objects.filter(
+            Q(nutriologo=request.user) &
+            (
+                Q(nombre__icontains=query) |
+                Q(apellido_paterno__icontains=query) |
+                Q(apellido_materno__icontains=query) |
+                Q(email__icontains=query)
+            )
+        )
+    else:
+        pacientes = Paciente.objects.filter(nutriologo=request.user)
+
+    return render(request, 'pacientes/lista_pacientes.html', {
+        'pacientes': pacientes,
+        'query': query,
+    })
 
 @login_required
 def crear_paciente(request):
