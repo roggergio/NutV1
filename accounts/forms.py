@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 
 class RegistrationForm(forms.ModelForm):
+
     password = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Ingrese Password',
         'class': 'form-control',
@@ -48,19 +49,34 @@ class RegistrationForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'form-control'
 
     def clean_first_name(self):
+        array = [
+        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+        'Ñ','Á','É','Í','Ó','Ú','Ü'
+        ]
+
         first_name = self.cleaned_data.get('first_name')
         if not first_name:
             raise ValidationError("El nombre es obligatorio.")
         if len(first_name) < 3:
             raise ValidationError("El nombre debe tener al menos 3 caracteres.")
+        for char in first_name:
+            if char.upper() not in array:
+                raise ValidationError("Nombre no se acepta carateres especiales")
         return first_name
 
     def clean_last_name(self):
+        array = [
+        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
+        'Ñ','Á','É','Í','Ó','Ú','Ü'
+        ]
         last_name = self.cleaned_data.get('last_name')
         if not last_name:
             raise ValidationError("El apellido es obligatorio.")
         if len(last_name) < 3:
             raise ValidationError("El apellido debe tener al menos 3 caracteres.")
+        for char in last_name:
+            if char.upper() not in array:
+                raise ValidationError("Apellido no se acepta carateres especiales")
         return last_name
 
     def validate_password_strength(self, password):
