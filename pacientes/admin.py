@@ -6,3 +6,7 @@ class PacienteAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'apellido_paterno', 'telefono', 'email', 'nutriologo', 'fecha_registro')
     search_fields = ('nombre', 'apellido_paterno', 'email', 'telefono')
     list_filter = ('genero', 'fecha_registro')
+    
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()

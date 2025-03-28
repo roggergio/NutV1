@@ -21,20 +21,26 @@ def crear_paciente(request):
             return redirect('lista_pacientes')
     else:
         form = PacienteForm()
-    return render(request, 'pacientes/form_paciente.html', {'form': form})
+    return render(request, 'pacientes/crear_paciente.html', {'form': form})
 
 @login_required
 def editar_paciente(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id, nutriologo=request.user)
+    
     if request.method == 'POST':
         form = PacienteForm(request.POST, instance=paciente)
         if form.is_valid():
-            form.save()
+            paciente = form.save(commit=False)
+            paciente.nutriologo = request.user
+            paciente.save()
             messages.success(request, 'Paciente actualizado correctamente.')
             return redirect('lista_pacientes')
+        else:
+            messages.error(request, 'Corrige los errores en el formulario.')
     else:
         form = PacienteForm(instance=paciente)
-    return render(request, 'pacientes/form_paciente.html', {'form': form})
+    
+    return render(request, 'pacientes/crear_paciente.html', {'form': form, 'paciente': paciente})
 
 @login_required
 def eliminar_paciente(request, paciente_id):

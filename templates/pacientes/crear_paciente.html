@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Registrar Paciente{% endblock %}
+
+{% block content %}
+<section class="datos_generales bordes">
+  <h3>Registro de Paciente</h3>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <!-- Errores generales del formulario -->
+    {% if form.non_field_errors %}
+      <div class="alert alert-danger">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
+    <!-- Campo por campo con errores -->
+
+    <p>
+      Apellido paterno: {{ form.apellido_paterno }}
+      {% for error in form.apellido_paterno.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Apellido materno: {{ form.apellido_materno }}
+      {% for error in form.apellido_materno.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Nombre: {{ form.nombre }}
+      {% for error in form.nombre.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Fecha de nacimiento: {{ form.fecha_nacimiento }}
+      {% for error in form.fecha_nacimiento.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Teléfono: {{ form.telefono }}
+      {% for error in form.telefono.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Correo electrónico: {{ form.email }}
+      {% for error in form.email.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Motivo de consulta: {{ form.motivo_consulta }}
+      {% for error in form.motivo_consulta.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Género: {{ form.genero }}
+      {% for error in form.genero.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Escolaridad: {{ form.escolaridad }}
+      {% for error in form.escolaridad.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <p>
+      Ocupación: {{ form.ocupacion }}
+      {% for error in form.ocupacion.errors %}
+        <span class="text-danger">{{ error }}</span>
+      {% endfor %}
+    </p>
+
+    <h3>Características del paciente</h3>
+
+    <p>{{ form.vegetariano }} Vegetariano</p>
+    <p>{{ form.embarazo }} Embarazo</p>
+    <p>{{ form.deportista }} Deportista</p>
+    <p>{{ form.adulto_mayor }} Adulto mayor</p>
+    <p>{{ form.pediatrico }} Pediátrico</p>
+
+    <input type="submit" value="Guardar" class="btn btn-primary mt-3">
+  </form>
+</section>
+{% endblock %}

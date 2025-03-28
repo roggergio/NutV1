@@ -3,9 +3,9 @@ from accounts.models import Account  # Importamos el modelo de usuario (nutriól
 
 class Paciente(models.Model):
     nutriologo = models.ForeignKey(Account, on_delete=models.CASCADE, related_name='pacientes')
-    apellido_paterno = models.CharField(max_length=50)
+    apellido_paterno = models.CharField(max_length=50, blank=True, null=True)
     apellido_materno = models.CharField(max_length=50, blank=True, null=True)
-    nombre = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100, blank=True, null=True)
     fecha_nacimiento = models.DateField()
     telefono = models.CharField(max_length=10)
     email = models.EmailField(max_length=100, blank=True, null=True)
