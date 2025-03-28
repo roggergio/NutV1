@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Confirmar Eliminación{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-body">
+      <h3 class="card-title text-danger">¿Estás seguro de que deseas eliminar este paciente?</h3>
+      <p class="card-text">
+        <strong>Nombre:</strong> {{ paciente.nombre }} {{ paciente.apellido_paterno }} {{ paciente.apellido_materno }}<br>
+        <strong>Email:</strong> {{ paciente.email }}<br>
+        <strong>Teléfono:</strong> {{ paciente.telefono }}
+      </p>
+
+      <form method="POST" class="mt-4">
+        {% csrf_token %}
+        <a href="{% url 'lista_pacientes' %}" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
