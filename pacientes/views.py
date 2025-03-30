@@ -67,3 +67,10 @@ def eliminar_paciente(request, paciente_id):
         messages.success(request, 'Paciente eliminado correctamente.')
         return redirect('lista_pacientes')
     return render(request, 'pacientes/confirmar_eliminar.html', {'paciente': paciente})
+
+@login_required
+def datos_paciente(request, paciente_id):
+    paciente = get_object_or_404(Paciente, id=paciente_id)
+    return render(request, 'pacientes/datosPaciente.html', {'paciente': paciente})
+
+

@@ -21,8 +21,7 @@ def pacientesList(request):
 
 def home(request):
     return render(request, 'home.html')
-def datos_generales(request):
-    return render(request, 'datosPaciente.html')
+
 
 def consultar(request):
     return render(request, 'baseConsultar.html')

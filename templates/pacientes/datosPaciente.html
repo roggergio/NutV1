@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Datos del Paciente{% endblock %}
+
+{% block content %}
+  <section class="datos_generales bordes">
+    <h3>Datos Generales</h3>
+    
+    <!-- Mostrar datos como labels -->
+    <p><strong>Apellido Paterno:</strong> <label>{{ paciente.apellido_paterno }}</label></p>
+    <p><strong>Apellido Materno:</strong> <label>{{ paciente.apellido_materno }}</label></p>
+    <p><strong>Nombre:</strong> <label>{{ paciente.nombre }}</label></p>
+    <p><strong>Fecha de Nacimiento:</strong> <label>{{ paciente.fecha_nacimiento }}</label></p>
+    <p><strong>Teléfono:</strong> <label>{{ paciente.telefono }}</label></p>
+    <p><strong>Correo Electrónico:</strong> <label>{{ paciente.email }}</label></p>
+    <p><strong>Motivo de Consulta:</strong> <label>{{ paciente.motivo_consulta }}</label></p>
+    <p><strong>Género:</strong> <label>{{ paciente.genero }}</label></p>
+    <p><strong>Escolaridad:</strong> <label>{{ paciente.escolaridad }}</label></p>
+    <p><strong>Ocupación:</strong> <label>{{ paciente.ocupacion }}</label></p>
+
+    <h3>Características del Paciente</h3>
+    <p><strong>Vegetariano:</strong> <label>{% if paciente.vegetariano %}Sí{% else %}No{% endif %}</label></p>
+    <p><strong>Embarazo:</strong> <label>{% if paciente.embarazo %}Sí{% else %}No{% endif %}</label></p>
+    <p><strong>Deportista:</strong> <label>{% if paciente.deportista %}Sí{% else %}No{% endif %}</label></p>
+    <p><strong>Adulto Mayor:</strong> <label>{% if paciente.amayor %}Sí{% else %}No{% endif %}</label></p>
+    <p><strong>Pediátrico:</strong> <label>{% if paciente.pediatrico %}Sí{% else %}No{% endif %}</label></p>
+
+    <!-- Opción para editar la información -->
+    <a href="{% url 'editar_paciente' paciente.id %}" class="btn btn-warning">Editar Información</a>
+  </section>
+{% endblock %}

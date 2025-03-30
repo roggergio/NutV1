@@ -25,7 +25,7 @@
       {% if pacientes %}
         {% for paciente in pacientes %}
         <tr>
-          <td>{{ paciente.nombre }} {{ paciente.apellido_paterno }}</td>
+          <td><a href="{% url 'datos_paciente' paciente_id=paciente.id %}">{{ paciente.nombre }} {{ paciente.apellido_paterno }}</a></td>
           <td>{{ paciente.telefono }}</td>
           <td>{{ paciente.email }}</td>
           <td>

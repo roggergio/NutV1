@@ -31,7 +31,7 @@ urlpatterns = [
 
     path('pacientes', views.pacientesList, name='pacientes'),
     path('home', views.home, name='home'),
-    path('datos_generales', views.datos_generales, name="datos_generales"),
+    #path('datos_generales', views.datos_generales, name="datos_generales"),
     path('consultar', views.consultar, name='consultar'),
     path('equivalentes', views.equivalentes, name= 'equivalentes'),
     path('equivalentesRenal', views.equivalentesRenal, name= 'equivalentesRenal'),
