@@ -8,31 +8,26 @@ class ToxicomaniaForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
+
         alcohol = cleaned_data.get('alcohol')
         tabaco = cleaned_data.get('tabaco')
         otro_check = cleaned_data.get('otro_check')
 
-        # Validaciones específicas solo si están activados los campos
-        if alcohol:
-            if not cleaned_data.get('alcohol_veces'):
-                self.add_error('alcohol_veces', 'Este campo es obligatorio.')
-            if not cleaned_data.get('alcohol_frecuencia') or cleaned_data.get('alcohol_frecuencia') == 'nunca':
-                self.add_error('alcohol_frecuencia', 'Selecciona una frecuencia válida.')
+        def validar_campo(nombre_check, nombre_veces, nombre_frec, label):
+            if cleaned_data.get(nombre_check):
+                veces = cleaned_data.get(nombre_veces)
+                frecuencia = cleaned_data.get(nombre_frec)
 
-        if tabaco:
-            if not cleaned_data.get('tabaco_veces'):
-                self.add_error('tabaco_veces', 'Este campo es obligatorio.')
-            if not cleaned_data.get('tabaco_frecuencia') or cleaned_data.get('tabaco_frecuencia') == 'nunca':
-                self.add_error('tabaco_frecuencia', 'Selecciona una frecuencia válida.')
+                if veces is None or veces < 1:
+                    self.add_error(nombre_veces, f"El número de veces de {label} debe ser al menos 1.")
+                if not frecuencia or frecuencia == 'nunca':
+                    self.add_error(nombre_frec, f"Selecciona una frecuencia válida para {label}.")
 
-        if otro_check:
-            if not cleaned_data.get('otro'):
-                self.add_error('otro', 'Indica el tipo de sustancia.')
-            if not cleaned_data.get('otro_veces'):
-                self.add_error('otro_veces', 'Este campo es obligatorio.')
-            if not cleaned_data.get('otro_frecuencia') or cleaned_data.get('otro_frecuencia') == 'nunca':
-                self.add_error('otro_frecuencia', 'Selecciona una frecuencia válida.')
+        # ✅ Estas llamadas deben ir **dentro** de `clean`
+        validar_campo('alcohol', 'alcohol_veces', 'alcohol_frecuencia', 'alcohol')
+        validar_campo('tabaco', 'tabaco_veces', 'tabaco_frecuencia', 'tabaco')
+        validar_campo('otro_check', 'otro_veces', 'otro_frecuencia', 'otro')
 
-        # Si no seleccionó ninguna sustancia
         if not (alcohol or tabaco or otro_check):
             raise forms.ValidationError("Debes seleccionar al menos una opción (alcohol, tabaco u otro).")
+
