@@ -14,16 +14,16 @@ class Toxicomania(models.Model):
     
     alcohol = models.BooleanField(default=False)
     alcohol_veces = models.IntegerField(null=True, blank=True)
-    alcohol_frecuencia = models.CharField(max_length=10, choices=FRECUENCIA_CHOICES, default='nunca')
+    alcohol_frecuencia = models.CharField(max_length=10, choices=FRECUENCIA_CHOICES, default='nunca', blank=True)
     
     tabaco = models.BooleanField(default=False)
     tabaco_veces = models.IntegerField(null=True, blank=True)
-    tabaco_frecuencia = models.CharField(max_length=10, choices=FRECUENCIA_CHOICES, default='nunca')
+    tabaco_frecuencia = models.CharField(max_length=10, choices=FRECUENCIA_CHOICES, default='nunca', blank=True)
 
     otro = models.CharField(max_length=100, blank=True)
     otro_check = models.BooleanField(default=False)
     otro_veces = models.IntegerField(null=True, blank=True)
-    otro_frecuencia = models.CharField(max_length=10, choices=FRECUENCIA_CHOICES, default='nunca')
+    otro_frecuencia = models.CharField(max_length=10, choices=FRECUENCIA_CHOICES, default='nunca', blank=True)
 
     fecha = models.DateField(auto_now_add=True)
 

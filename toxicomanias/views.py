@@ -15,8 +15,13 @@ def registrar_toxicomanias(request, paciente_id):
             toxicomania = form.save(commit=False)
             toxicomania.paciente = paciente
             toxicomania.save()
-            return redirect('detalle_paciente', paciente_id=paciente.id)  # Ajusta si tienes otro nombre
+            return redirect('detalle_paciente', paciente_id=paciente.id)
+        else:
+            print(form.errors)
     else:
-        form = ToxicomaniaForm()
+        form = ToxicomaniaForm()  # ✅ aquí defines 'form' para la primera carga (GET)
 
-    return render(request, 'toxicomanias/registrar_toxicomanias.html', {'form': form, 'paciente': paciente})
+    return render(request, 'toxicomanias/registrar_toxicomanias.html', {
+        'form': form,
+        'paciente': paciente
+    })
