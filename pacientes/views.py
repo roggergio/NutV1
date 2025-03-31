@@ -6,6 +6,7 @@ from .forms import PacienteForm, AntropometriaForm
 from django.db.models import Q
 from decimal import Decimal, InvalidOperation
 from django.utils.timezone import now
+from django.core.exceptions import PermissionDenied
 
 @login_required
 def lista_pacientes(request):
@@ -73,6 +74,10 @@ def eliminar_paciente(request, paciente_id):
 @login_required
 def datos_paciente(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
+
+    if paciente.nutriologo != request.user:
+        raise PermissionDenied("No tienes permiso para ver este paciente.")
+
     return render(request, 'pacientes/datosPaciente.html', {'paciente': paciente})
 
 
@@ -86,10 +91,15 @@ def to_decimal(value):
 
 def registrar_antropometria(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
+
+    if paciente.nutriologo != request.user:
+        raise PermissionDenied("No tienes permiso para ver este paciente.")
     hoy = now().date()
 
     # Verifica si ya existe un registro para hoy
     antropometria = Antropometria.objects.filter(paciente=paciente, fecha=hoy).first()
+    if paciente.nutriologo != request.user:
+        raise PermissionDenied("No tienes permiso para ver este paciente.")
 
     if request.method == 'POST':
         peso = to_decimal(request.POST.get('peso'))

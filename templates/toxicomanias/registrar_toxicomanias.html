@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Toxicomanías{% endblock %}
+
+{% block content %}
+<h3>Toxicomanías y Alergias - {{ paciente.nombre }}</h3>
+
+<form method="post">
+  {% csrf_token %}
+  <table>
+    <thead>
+      <tr>
+        <th>Indicador</th>
+        <th>¿Sí/No?</th>
+        <th>Frecuencia</th>
+        <th>Periodo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alcohol</td>
+        <td>{{ form.alcohol }}</td>
+        <td>{{ form.alcohol_veces }}</td>
+        <td>{{ form.alcohol_frecuencia }}</td>
+      </tr>
+      <tr>
+        <td>Tabaco</td>
+        <td>{{ form.tabaco }}</td>
+        <td>{{ form.tabaco_veces }}</td>
+        <td>{{ form.tabaco_frecuencia }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.otro }}</td>
+        <td>{{ form.otro_check }}</td>
+        <td>{{ form.otro_veces }}</td>
+        <td>{{ form.otro_frecuencia }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button type="submit">Guardar</button>
+</form>
+{% endblock %}
