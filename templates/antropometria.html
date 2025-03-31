@@ -15,27 +15,27 @@
 
     <p>
       <label for="estatura">Estatura (cm):</label>
-      <input type="number" name="estatura" id="estatura" min="35"  max="255"step="0.1" required>
+      <input type="number" name="estatura" id="estatura" min="35" max="255" step="0.1" required>
     </p>
 
     <p>
       <label for="imc">Índice de Masa Corporal (IMC):</label>
       <input type="number" id="imc" min="0" step="0.01" readonly>
     </p>
+
     <p>
-      <label>Rango de peso saludable (IMC 18.5 - 24.9):    </label>
-      <span id="rangoPeso"><strong>-- kg</strong></span>
-      
+      <label>Rango de peso saludable (IMC 18.5 - 24.9):</label>
+      <span id="rangoPeso">-- kg</span>
     </p>
 
     <p>
       <label for="cintura">Perímetro de cintura (cm):</label>
-      <input type="number" name="cintura" min="0" id="cintura" step="0.1">
+      <input type="number" name="cintura" id="cintura" min="0" step="0.1">
     </p>
 
     <p>
       <label for="cadera">Perímetro de cadera (cm):</label>
-      <input type="number" name="cadera" min="0" id="cadera" step="0.1">
+      <input type="number" name="cadera" id="cadera" min="0" step="0.1">
     </p>
 
     <p>
@@ -45,13 +45,15 @@
 
     <p>
       <label for="grasa_corporal">Porcentaje de grasa corporal (%):</label>
-      <input type="number" name="grasa_corporal" min="0" step="0.1">
+      <input type="number" name="grasa_corporal" id="grasa_corporal" min="0" step="0.1">
     </p>
 
     <p>
       <label for="masa_muscular">Porcentaje de masa muscular (%):</label>
-      <input type="number" name="masa_muscular" min="0" step="0.1">
+      <input type="number" name="masa_muscular" id="masa_muscular" min="0" step="0.1">
     </p>
+
+    <p id="errorMsg" style="color: red; display: none;">❌ No se permiten valores negativos.</p>
 
     <button type="submit">Guardar</button>
   </form>
@@ -64,8 +66,27 @@
   const cinturaInput = document.getElementById('cintura');
   const caderaInput = document.getElementById('cadera');
   const relacionCCInput = document.getElementById('relacionCC');
+  const grasaInput = document.getElementById('grasa_corporal');
+  const musculoInput = document.getElementById('masa_muscular');
   const rangoPesoSpan = document.getElementById('rangoPeso');
+  const errorMsg = document.getElementById('errorMsg');
 
+  const camposNumericos = [pesoInput, estaturaInput, cinturaInput, caderaInput, grasaInput, musculoInput];
+
+  // Validación de valores negativos
+  camposNumericos.forEach(input => {
+    input.addEventListener('input', () => {
+      if (parseFloat(input.value) < 0) {
+        errorMsg.style.display = 'block';
+        input.value = '';
+        input.focus();
+      } else {
+        errorMsg.style.display = 'none';
+      }
+    });
+  });
+
+  // Calcular IMC
   function calcularIMC() {
     const peso = parseFloat(pesoInput.value);
     const estatura = parseFloat(estaturaInput.value) / 100;
@@ -80,6 +101,7 @@
     calcularRangoPeso(estatura);
   }
 
+  // Calcular Relación Cintura-Cadera
   function calcularRelacionCC() {
     const cintura = parseFloat(cinturaInput.value);
     const cadera = parseFloat(caderaInput.value);
@@ -92,6 +114,7 @@
     }
   }
 
+  // Calcular rango de peso saludable
   function calcularRangoPeso(estatura) {
     if (!isNaN(estatura) && estatura > 0) {
       const pesoMin = 18.5 * estatura * estatura;
@@ -102,11 +125,10 @@
     }
   }
 
+  // Listeners
   pesoInput.addEventListener('input', calcularIMC);
   estaturaInput.addEventListener('input', calcularIMC);
   cinturaInput.addEventListener('input', calcularRelacionCC);
   caderaInput.addEventListener('input', calcularRelacionCC);
 </script>
-
 {% endblock %}
-

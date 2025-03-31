@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Antropometria, Paciente
 from .forms import PacienteForm, AntropometriaForm
 from django.db.models import Q
+from decimal import Decimal, InvalidOperation
 
 @login_required
 def lista_pacientes(request):
@@ -76,25 +77,35 @@ def datos_paciente(request, paciente_id):
 
 
 #---------------------------------------------------------------------------------------Antropometría
+def to_decimal(value):
+    try:
+        return Decimal(value)
+    except (TypeError, InvalidOperation):
+        return None
+
 def registrar_antropometria(request, paciente_id):
-    paciente = Paciente.objects.get(id=paciente_id)
+    paciente = get_object_or_404(Paciente, id=paciente_id)
 
     if request.method == 'POST':
-        peso = request.POST.get('peso')
-        estatura = request.POST.get('estatura')
-        cintura = request.POST.get('cintura')
-        cadera = request.POST.get('cadera')
-        grasa_corporal = request.POST.get('grasa_corporal')
-        masa_muscular = request.POST.get('masa_muscular')
+        peso = to_decimal(request.POST.get('peso'))
+        estatura = to_decimal(request.POST.get('estatura'))
+        cintura = to_decimal(request.POST.get('cintura'))
+        cadera = to_decimal(request.POST.get('cadera'))
+        grasa_corporal = to_decimal(request.POST.get('grasa_corporal'))
+        masa_muscular = to_decimal(request.POST.get('masa_muscular'))
 
-        # Calcular IMC y relación Cintura-Cadera
-        imc = float(peso) / (float(estatura) / 100) ** 2
-        if cintura and cadera:
-            relacion_cc = float(cintura) / float(cadera)
-        else:
-            relacion_cc = None
+        if peso is None or estatura is None:
+            # peso y estatura son requeridos
+            return render(request, 'antropometria.html', {
+                'paciente': paciente,
+                'error': 'Peso y estatura son obligatorios y deben ser números.'
+            })
 
-        # Guardar los datos en la base de datos
+        # Calcular IMC y relación cintura-cadera
+        imc = peso / ((estatura / 100) ** 2)
+        relacion_cc = (cintura / cadera) if cintura and cadera else None
+
+        # Guardar los datos
         Antropometria.objects.create(
             paciente=paciente,
             peso=peso,
