@@ -41,6 +41,10 @@ class Antropometria(models.Model):
     grasa_corporal = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     masa_muscular = models.DecimalField(max_digits=5, decimal_places=2, null=True, blank=True)
     fecha = models.DateField(auto_now_add=True)
+    
+    class Meta:
+        unique_together = ('paciente', 'fecha')
+
 
     def __str__(self):
         return f'Antropometría de {self.paciente.nombre} ({self.fecha})'

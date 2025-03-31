@@ -5,6 +5,7 @@ from .models import Antropometria, Paciente
 from .forms import PacienteForm, AntropometriaForm
 from django.db.models import Q
 from decimal import Decimal, InvalidOperation
+from django.utils.timezone import now
 
 @login_required
 def lista_pacientes(request):
@@ -85,6 +86,10 @@ def to_decimal(value):
 
 def registrar_antropometria(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
+    hoy = now().date()
+
+    # Verifica si ya existe un registro para hoy
+    antropometria = Antropometria.objects.filter(paciente=paciente, fecha=hoy).first()
 
     if request.method == 'POST':
         peso = to_decimal(request.POST.get('peso'))
@@ -95,29 +100,43 @@ def registrar_antropometria(request, paciente_id):
         masa_muscular = to_decimal(request.POST.get('masa_muscular'))
 
         if peso is None or estatura is None:
-            # peso y estatura son requeridos
             return render(request, 'antropometria.html', {
                 'paciente': paciente,
                 'error': 'Peso y estatura son obligatorios y deben ser números.'
             })
 
-        # Calcular IMC y relación cintura-cadera
         imc = peso / ((estatura / 100) ** 2)
         relacion_cc = (cintura / cadera) if cintura and cadera else None
 
-        # Guardar los datos
-        Antropometria.objects.create(
-            paciente=paciente,
-            peso=peso,
-            estatura=estatura,
-            imc=imc,
-            cintura=cintura,
-            cadera=cadera,
-            relacion_cc=relacion_cc,
-            grasa_corporal=grasa_corporal,
-            masa_muscular=masa_muscular
-        )
+        if antropometria:
+            # Si ya existe, actualiza
+            antropometria.peso = peso
+            antropometria.estatura = estatura
+            antropometria.imc = imc
+            antropometria.cintura = cintura
+            antropometria.cadera = cadera
+            antropometria.relacion_cc = relacion_cc
+            antropometria.grasa_corporal = grasa_corporal
+            antropometria.masa_muscular = masa_muscular
+            antropometria.save()
+        else:
+            # Si no existe, crea uno nuevo
+            Antropometria.objects.create(
+                paciente=paciente,
+                peso=peso,
+                estatura=estatura,
+                imc=imc,
+                cintura=cintura,
+                cadera=cadera,
+                relacion_cc=relacion_cc,
+                grasa_corporal=grasa_corporal,
+                masa_muscular=masa_muscular
+            )
 
         return redirect('pacientes/datosPaciente.html', paciente_id=paciente.id)
 
-    return render(request, 'antropometria.html', {'paciente': paciente})
+    # En GET, enviar el registro de hoy si existe para prellenar el formulario
+    return render(request, 'antropometria.html', {
+        'paciente': paciente,
+        'antropometria': antropometria
+    })
