@@ -1,20 +1,54 @@
-
 {% extends 'base.html' %}
 
 {% block title %}Antropometría{% endblock %}
 
 {% block content %}
 <section class="datos_generales bordes">
-  <form action="">
+  <form method="POST" action="{% url 'registrar_antropometria' paciente.id %}">
+    {% csrf_token %}
     <h3>Antropometría</h3>
-    <p>Peso (kg) <input type="number" id="peso" step="0.01" required></p>
-    <p>Estatura (cm) <input type="number" id="estatura" step="0.1" required></p>
-    <p type="number" id="imc" step="0.01" readonly>Índice de Masa Corporal (IMC) <input type="number" id="imc" step="0.01" readonly></p>
-    <p>Perímetro de cintura (cm) <input type="number" id="cintura" step="0.1"></p>
-    <p>Perímetro de cadera (cm) <input type="number" id="cadera" step="0.1"></p>
-    <p>Relación cintura-cadera <input type="number" id="relacionCC" step="0.01" readonly></p>
-    <p>Porcentaje de grasa corporal (%) <input type="number" step="0.1"></p>
-    <p>Porcentaje de masa muscular (%) <input type="number" step="0.1"></p>
+
+    <p>
+      <label for="peso">Peso (kg):</label>
+      <input type="number" name="peso" id="peso" step="0.01" required>
+    </p>
+
+    <p>
+      <label for="estatura">Estatura (cm):</label>
+      <input type="number" name="estatura" id="estatura" step="0.1" required>
+    </p>
+
+    <p>
+      <label for="imc">Índice de Masa Corporal (IMC):</label>
+      <input type="number" id="imc" step="0.01" readonly>
+    </p>
+
+    <p>
+      <label for="cintura">Perímetro de cintura (cm):</label>
+      <input type="number" name="cintura" id="cintura" step="0.1">
+    </p>
+
+    <p>
+      <label for="cadera">Perímetro de cadera (cm):</label>
+      <input type="number" name="cadera" id="cadera" step="0.1">
+    </p>
+
+    <p>
+      <label for="relacionCC">Relación cintura-cadera:</label>
+      <input type="number" id="relacionCC" step="0.01" readonly>
+    </p>
+
+    <p>
+      <label for="grasa_corporal">Porcentaje de grasa corporal (%):</label>
+      <input type="number" name="grasa_corporal" step="0.1">
+    </p>
+
+    <p>
+      <label for="masa_muscular">Porcentaje de masa muscular (%):</label>
+      <input type="number" name="masa_muscular" step="0.1">
+    </p>
+
+    <button type="submit">Guardar</button>
   </form>
 </section>
 
@@ -60,3 +94,4 @@
   caderaInput.addEventListener('input', calcularRelacionCC);
 </script>
 {% endblock %}
+

@@ -209,6 +209,8 @@ button {
         <li>
 <button type="button" name="button" >
   <a href="{% url 'datos_paciente' paciente_id=paciente.id %}" class="nav-link active navegacion__enlace">
+    Ver datos del paciente
+</a>
               <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
 <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
@@ -249,7 +251,9 @@ button {
           </li>
           <li class="nav-item">
             <button type="button" name="button">
-              <a href="{% url 'antropometria' %}" class="nav-link active navegacion__enlace">
+              <a href="{% url 'registrar_antropometria' paciente_id=paciente.id %}" class="nav-link active navegacion__enlace">
+                Ver Antropometría
+            </a>
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M9 15l-1 -3l4 -2l4 1h3.5"></path>
 <path d="M4 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>

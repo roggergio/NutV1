@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Paciente
-from .forms import PacienteForm
+from .models import Antropometria, Paciente
+from .forms import PacienteForm, AntropometriaForm
 from django.db.models import Q
 
 @login_required
@@ -74,3 +74,39 @@ def datos_paciente(request, paciente_id):
     return render(request, 'pacientes/datosPaciente.html', {'paciente': paciente})
 
 
+
+#---------------------------------------------------------------------------------------Antropometría
+def registrar_antropometria(request, paciente_id):
+    paciente = Paciente.objects.get(id=paciente_id)
+
+    if request.method == 'POST':
+        peso = request.POST.get('peso')
+        estatura = request.POST.get('estatura')
+        cintura = request.POST.get('cintura')
+        cadera = request.POST.get('cadera')
+        grasa_corporal = request.POST.get('grasa_corporal')
+        masa_muscular = request.POST.get('masa_muscular')
+
+        # Calcular IMC y relación Cintura-Cadera
+        imc = float(peso) / (float(estatura) / 100) ** 2
+        if cintura and cadera:
+            relacion_cc = float(cintura) / float(cadera)
+        else:
+            relacion_cc = None
+
+        # Guardar los datos en la base de datos
+        Antropometria.objects.create(
+            paciente=paciente,
+            peso=peso,
+            estatura=estatura,
+            imc=imc,
+            cintura=cintura,
+            cadera=cadera,
+            relacion_cc=relacion_cc,
+            grasa_corporal=grasa_corporal,
+            masa_muscular=masa_muscular
+        )
+
+        return redirect('pacientes/datosPaciente.html', paciente_id=paciente.id)
+
+    return render(request, 'antropometria.html', {'paciente': paciente})
