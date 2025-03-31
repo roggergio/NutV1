@@ -10,42 +10,47 @@
 
     <p>
       <label for="peso">Peso (kg):</label>
-      <input type="number" name="peso" id="peso" step="0.01" required>
+      <input type="number" name="peso" id="peso" min="1" step="0.01" required>
     </p>
 
     <p>
       <label for="estatura">Estatura (cm):</label>
-      <input type="number" name="estatura" id="estatura" step="0.1" required>
+      <input type="number" name="estatura" id="estatura" min="35"  max="255"step="0.1" required>
     </p>
 
     <p>
       <label for="imc">Índice de Masa Corporal (IMC):</label>
-      <input type="number" id="imc" step="0.01" readonly>
+      <input type="number" id="imc" min="0" step="0.01" readonly>
+    </p>
+    <p>
+      <label>Rango de peso saludable (IMC 18.5 - 24.9):    </label>
+      <span id="rangoPeso"><strong>-- kg</strong></span>
+      
     </p>
 
     <p>
       <label for="cintura">Perímetro de cintura (cm):</label>
-      <input type="number" name="cintura" id="cintura" step="0.1">
+      <input type="number" name="cintura" min="0" id="cintura" step="0.1">
     </p>
 
     <p>
       <label for="cadera">Perímetro de cadera (cm):</label>
-      <input type="number" name="cadera" id="cadera" step="0.1">
+      <input type="number" name="cadera" min="0" id="cadera" step="0.1">
     </p>
 
     <p>
       <label for="relacionCC">Relación cintura-cadera:</label>
-      <input type="number" id="relacionCC" step="0.01" readonly>
+      <input type="number" id="relacionCC" min="0" step="0.01" readonly>
     </p>
 
     <p>
       <label for="grasa_corporal">Porcentaje de grasa corporal (%):</label>
-      <input type="number" name="grasa_corporal" step="0.1">
+      <input type="number" name="grasa_corporal" min="0" step="0.1">
     </p>
 
     <p>
       <label for="masa_muscular">Porcentaje de masa muscular (%):</label>
-      <input type="number" name="masa_muscular" step="0.1">
+      <input type="number" name="masa_muscular" min="0" step="0.1">
     </p>
 
     <button type="submit">Guardar</button>
@@ -53,45 +58,55 @@
 </section>
 
 <script>
-  // Elementos del DOM
   const pesoInput = document.getElementById('peso');
   const estaturaInput = document.getElementById('estatura');
   const imcInput = document.getElementById('imc');
   const cinturaInput = document.getElementById('cintura');
   const caderaInput = document.getElementById('cadera');
   const relacionCCInput = document.getElementById('relacionCC');
+  const rangoPesoSpan = document.getElementById('rangoPeso');
 
-  // Calcular IMC
   function calcularIMC() {
     const peso = parseFloat(pesoInput.value);
-    const estatura = parseFloat(estaturaInput.value) / 100; // Convertir a metros
+    const estatura = parseFloat(estaturaInput.value) / 100;
 
     if (!isNaN(peso) && !isNaN(estatura) && estatura > 0) {
       const imc = peso / (estatura * estatura);
-      imcInput.value = imc.toFixed(2); // Mostrar con dos decimales
+      imcInput.value = imc.toFixed(2);
     } else {
       imcInput.value = '';
     }
+
+    calcularRangoPeso(estatura);
   }
 
-  // Calcular Relación Cintura-Cadera
   function calcularRelacionCC() {
     const cintura = parseFloat(cinturaInput.value);
     const cadera = parseFloat(caderaInput.value);
 
     if (!isNaN(cintura) && !isNaN(cadera) && cadera > 0) {
       const relacion = cintura / cadera;
-      relacionCCInput.value = relacion.toFixed(2); // Mostrar con dos decimales
+      relacionCCInput.value = relacion.toFixed(2);
     } else {
       relacionCCInput.value = '';
     }
   }
 
-  // Event Listeners
+  function calcularRangoPeso(estatura) {
+    if (!isNaN(estatura) && estatura > 0) {
+      const pesoMin = 18.5 * estatura * estatura;
+      const pesoMax = 24.9 * estatura * estatura;
+      rangoPesoSpan.textContent = `${pesoMin.toFixed(1)} kg - ${pesoMax.toFixed(1)} kg`;
+    } else {
+      rangoPesoSpan.textContent = '-- kg';
+    }
+  }
+
   pesoInput.addEventListener('input', calcularIMC);
   estaturaInput.addEventListener('input', calcularIMC);
   cinturaInput.addEventListener('input', calcularRelacionCC);
   caderaInput.addEventListener('input', calcularRelacionCC);
 </script>
+
 {% endblock %}
 
