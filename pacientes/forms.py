@@ -1,4 +1,5 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from .models import Paciente, Antropometria
 
 class PacienteForm(forms.ModelForm):
@@ -19,10 +20,21 @@ class PacienteForm(forms.ModelForm):
         }
 
     def clean_apellido_paterno(self):
+        valid_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚÜ')
+        
         apellido = self.cleaned_data.get('apellido_paterno')
         if not apellido:
-            raise forms.ValidationError("El apellido paterno es obligatorio.")
+            raise ValidationError("El apellido paterno es obligatorio.")
+        
+        apellido = apellido.strip()
+        if len(apellido) < 3:
+            raise ValidationError("El Apellido Paterno debe tener al menos 3 caracteres.")
+        
+        for char in apellido:
+            if char.upper() not in valid_chars and char != " ":
+                raise ValidationError("El Apellido Paterno no debe contener caracteres especiales.")
         return apellido
+        
 
     def clean_nombre(self):
         nombre = self.cleaned_data.get('nombre')
