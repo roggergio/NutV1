@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Toxicomanías{% endblock %}
+
+{% block content %}
+<h3>Toxicomanías y Alergias - {{ paciente.nombre }}</h3>
+<h2>Alergias de {{ paciente.nombre }}</h2>
+
+<a href="{% url 'agregar_alergia' paciente.id %}">Agregar Alergia</a>
+<ul>
+    {% for alergia in alergias %}
+        <li>
+            <strong>{{ alergia.nombre }}</strong> - {{ alergia.gravedad }}
+            <br>
+            Reacción: {{ alergia.reaccion }}<br>
+            Fecha diagnóstico: {{ alergia.fecha_diagnostico }}
+            <br>
+            <a href="{% url 'editar_alergia' paciente.id alergia.id %}">Editar</a>
+            <a href="{% url 'eliminar_alergia' paciente.id alergia.id %}">Eliminar</a>
+
+        </li>
+    {% empty %}
+        <li>No hay alergias registradas.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

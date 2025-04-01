@@ -1,0 +1,49 @@
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Alergia
+from .forms import AlergiaForm
+from pacientes.models import Paciente
+from django.http import Http404
+
+def lista_alergias(request, paciente_id):
+    paciente = get_object_or_404(Paciente, id=paciente_id)
+    alergias = paciente.alergias.all()
+    return render(request, 'alergias/lista_alergias.html', {'paciente': paciente, 'alergias': alergias})
+
+def agregar_alergia(request, paciente_id):
+    paciente = get_object_or_404(Paciente, id=paciente_id)
+
+    # Evita acceso no autorizado
+    if paciente.nutriologo != request.user:
+        raise Http404("No tienes permiso para agregar alergias a este paciente.")
+    if request.method == 'POST':
+        form = AlergiaForm(request.POST)
+        if form.is_valid():
+            alergia = form.save(commit=False)
+            alergia.paciente = paciente  # Se asigna aquí, no desde el form
+            alergia.save()
+            return redirect('lista_alergias', paciente_id=paciente.id)
+    else:
+        form = AlergiaForm()
+
+    return render(request, 'alergias/form_alergia.html', {
+        'form': form,
+        'paciente': paciente
+    })
+
+
+def editar_alergia(request, paciente_id, alergia_id):
+    alergia = get_object_or_404(Alergia, id=alergia_id, paciente__id=paciente_id)
+    paciente = alergia.paciente
+    if request.method == 'POST':
+        form = AlergiaForm(request.POST, instance=alergia)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_alergias', paciente_id=paciente.id)
+    else:
+        form = AlergiaForm(instance=alergia)
+    return render(request, 'alergias/form_alergia.html', {'form': form, 'paciente': paciente})
+
+def eliminar_alergia(request, paciente_id, alergia_id):
+    alergia = get_object_or_404(Alergia, id=alergia_id, paciente__id=paciente_id)
+    alergia.delete()
+    return redirect('lista_alergias', paciente_id=paciente_id)

@@ -23,6 +23,8 @@ urlpatterns = [
     path('', include('accounts.urls')),
     path('pacientes/', include('pacientes.urls')), 
     path('toxicomanias/', include('toxicomanias.urls')),
+    path('alergias/', include('alergias.urls')),
+
     path('registroNutri', views.registroNutri, name='registroNutri'),
     path('price', views.price, name='price'),
     path('carrito', views.carrito, name='carrito'),
