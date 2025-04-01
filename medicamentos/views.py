@@ -1,9 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Medicamento
 from pacientes.models import Paciente
+from django.core.exceptions import PermissionDenied
 
 def registrar_medicamentos(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
+
+    if paciente.nutriologo != request.user:
+        raise PermissionDenied("No tienes permiso para ver este paciente.")
 
     if request.method == 'POST':
         nombres = request.POST.getlist('nombre_farmaco[]')
@@ -34,6 +38,8 @@ def registrar_medicamentos(request, paciente_id):
 
 def lista_medicamentos(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
+    if paciente.nutriologo != request.user:
+        raise PermissionDenied("No tienes permiso para ver este paciente.")
     medicamentos = paciente.medicamentos.all().order_by('-fecha_registro')  # si agregamos fecha
     return render(request, 'medicamentos/lista_medicamentos.html', {
         'paciente': paciente,
