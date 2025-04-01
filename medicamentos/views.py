@@ -32,6 +32,7 @@ def registrar_medicamentos(request, paciente_id):
                 observaciones=observaciones[i] if observaciones[i] else ""
             )
 
+
         return redirect('detalle_paciente', paciente_id=paciente.id)  # O la vista que desees
 
     return render(request, 'medicamentos/formulario_medicamentos.html', {'paciente': paciente})
