@@ -24,7 +24,7 @@ class PacienteForm(forms.ModelForm):
         
         apellido = self.cleaned_data.get('apellido_paterno')
         if not apellido:
-            raise ValidationError("El apellido paterno es obligatorio.")
+            raise ValidationError("El apellido Paterno es obligatorio.")
         
         apellido = apellido.strip()
         if len(apellido) < 3:
@@ -34,6 +34,22 @@ class PacienteForm(forms.ModelForm):
             if char.upper() not in valid_chars and char != " ":
                 raise ValidationError("El Apellido Paterno no debe contener caracteres especiales.")
         return apellido
+
+    def clean_apellido_materno(self):
+        valid_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚÜ')
+        
+        apellido_materno = self.cleaned_data.get('apellido_materno')
+        if not apellido_materno:
+            raise ValidationError("El apellido Materno es obligatorio.")
+        
+        apellido_materno = apellido_materno.strip()
+        if len(apellido_materno) < 3:
+            raise ValidationError("El Apellido Materno debe tener al menos 3 caracteres.")
+        
+        for char in apellido_materno:
+            if char.upper() not in valid_chars and char != " ":
+                raise ValidationError("El Apellido Materno no debe contener caracteres especiales.")
+        return apellido_materno
         
 
     def clean_nombre(self):
