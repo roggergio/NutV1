@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Bioquímicos del Paciente{% endblock %}
+
+{% block content %}
+
+<style>
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #c3f4f4;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+  }
+  th {
+    background-color: #00bfbf;
+    color: white;
+  }
+  input, select {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+  button {
+    margin-top: 10px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+  }
+</style>
+
+<h2>Medicamentos de {{ paciente.nombre }}</h2>
+<a href="{% url 'medicamentos:registrar' paciente.id %}">Registrar medicamentos</a>
+
+<table border="1">
+  <tr>
+    <th>Fecha de Registro</th>
+    <th>Nombre del Fármaco</th>
+    <th>Nombre Genérico</th>
+    <th>Presentación</th>
+    <th>Dosis</th>
+    <th>Frecuencia</th>
+    <th>Duración</th>
+    <th>Vía</th>
+    <th>Observaciones</th>
+  </tr>
+  {% for medicamento in medicamentos %}
+  <tr>
+    <td>{{ medicamento.fecha_registro|date:"d/m/Y H:i" }}</td>
+    <td>{{ medicamento.nombre_farmaco }}</td>
+    <td>{{ medicamento.nombre_generico }}</td>
+    <td>{{ medicamento.presentacion }}</td>
+    <td>{{ medicamento.dosis }}</td>
+    <td>{{ medicamento.frecuencia }}</td>
+    <td>{{ medicamento.duracion }}</td>
+    <td>{{ medicamento.via }}</td>
+    <td>{{ medicamento.observaciones }}</td>
+  </tr>
+  {% empty %}
+  <tr>
+    <td colspan="9">No se han registrado medicamentos.</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+{% endblock %}
