@@ -60,7 +60,7 @@ def editar_paciente(request, paciente_id):
     else:
         form = PacienteForm(instance=paciente)
     
-    return render(request, 'pacientes/crear_paciente.html', {'form': form, 'paciente': paciente})
+    return render(request, 'pacientes/editar_paciente.html', {'form': form, 'paciente': paciente})
 
 @login_required
 def eliminar_paciente(request, paciente_id):
