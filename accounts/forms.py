@@ -17,10 +17,8 @@ class RegistrationForm(forms.ModelForm):
 
     phone_number = forms.CharField(
         widget=forms.TextInput(attrs={
-            'placeholder': 'Ingrese teléfono (10 dígitos)',
             'class': 'form-control',
-            'maxlength': '10',
-            'type': 'number',
+            'maxlength': '10'
         }),
         validators=[
             RegexValidator(
@@ -49,34 +47,38 @@ class RegistrationForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'form-control'
 
     def clean_first_name(self):
-        array = [
-        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-        'Ñ','Á','É','Í','Ó','Ú','Ü'
-        ]
-
+        
+        valid_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚÜ')
+        
         first_name = self.cleaned_data.get('first_name')
         if not first_name:
             raise ValidationError("El nombre es obligatorio.")
+
+        first_name = first_name.strip()
+
         if len(first_name) < 3:
             raise ValidationError("El nombre debe tener al menos 3 caracteres.")
+
         for char in first_name:
-            if char.upper() not in array:
-                raise ValidationError("Nombre no se acepta carateres especiales")
+            if char.upper() not in valid_chars and char != " ":
+                raise ValidationError("El nombre no debe contener caracteres especiales.")
         return first_name
 
     def clean_last_name(self):
-        array = [
-        'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',
-        'Ñ','Á','É','Í','Ó','Ú','Ü'
-        ]
+        
+        valid_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚÜ')
+        
         last_name = self.cleaned_data.get('last_name')
         if not last_name:
             raise ValidationError("El apellido es obligatorio.")
+        
+        last_name = last_name.strip()
+        
         if len(last_name) < 3:
             raise ValidationError("El apellido debe tener al menos 3 caracteres.")
         for char in last_name:
-            if char.upper() not in array:
-                raise ValidationError("Apellido no se acepta carateres especiales")
+            if char.upper() not in valid_chars and char!= " ":
+                raise ValidationError("Apellido no se acepta carateres especiales.")
         return last_name
 
     def validate_password_strength(self, password):
@@ -86,6 +88,8 @@ class RegistrationForm(forms.ModelForm):
             raise ValidationError('La contraseña debe incluir al menos un número.')
         if not any(char.isalpha() for char in password):
             raise ValidationError('La contraseña debe incluir al menos una letra.')
+        if " " in password:
+            raise ValidationError('La contraseña no debe contener espacios.')
 
     def clean(self):
         cleaned_data = super().clean()
@@ -108,3 +112,8 @@ class RegistrationForm(forms.ModelForm):
         if Account.objects.filter(email=email).exists():
             raise ValidationError("El email ya está registrado.")
         return email.lower()
+
+
+
+
+

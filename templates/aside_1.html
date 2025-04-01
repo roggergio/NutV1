@@ -208,9 +208,11 @@ button {
       <ul class="nav-link active navegacion__enlace">
         <li>
 <button type="button" name="button" >
+  {% if paciente %}
   <a href="{% url 'datos_paciente' paciente_id=paciente.id %}" class="nav-link active navegacion__enlace">
     Ver datos del paciente
 </a>
+{% endif %}
               <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2"></path>
 <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z"></path>
@@ -238,6 +240,7 @@ button {
           </li>
           <li>
             <button type="button" name="button">
+              {% if paciente %}
               <a href="{% url 'registrar_toxicomanias' paciente.id %}" class="nav-link active navegacion__enlace">Toxicomanías</a>
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M9 3h6"></path>
@@ -247,10 +250,12 @@ button {
 </svg>
                   Tóxicomanias 
               </a>
+              {% endif %}
               </button>
           </li>
           <li>
             <button type="button" name="button">
+              {% if paciente %}
               <a href="{% url 'lista_alergias' paciente.id %}" class="nav-link active navegacion__enlace">alergias</a>
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M9 3h6"></path>
@@ -260,13 +265,16 @@ button {
 </svg>
                   Alergias
               </a>
+              {% endif %}
               </button>
           </li>
           <li class="nav-item">
             <button type="button" name="button">
+              {% if paciente %}
               <a href="{% url 'registrar_antropometria' paciente_id=paciente.id %}" class="nav-link active navegacion__enlace">
                 Ver Antropometría
             </a>
+            {% endif %}
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
 <path d="M9 15l-1 -3l4 -2l4 1h3.5"></path>
 <path d="M4 19m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"></path>
@@ -294,6 +302,7 @@ button {
           </li>
           <li>
             <button type="button" name="button">
+              {% if paciente %}
               <a href="{% url 'medicamentos:lista' paciente.id %}">Ver medicamentos</a>
                 <svg xmlns="http://www.w3.org/2000/svg" x-bind:width="size" x-bind:height="size" viewBox="0 0 24 24" fill="none" stroke="currentColor" x-bind:stroke-width="stroke" stroke-linecap="round" stroke-linejoin="round" width="24" height="24" stroke-width="2">
   <path d="M14 12l0 .01"></path>
@@ -304,6 +313,7 @@ button {
 </svg>
                   Medicamentos
               </a>
+              {% endif %}
               </button>
           </li>
           <li class="nav-item">
