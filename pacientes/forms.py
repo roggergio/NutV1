@@ -11,7 +11,10 @@ class PacienteForm(forms.ModelForm):
         ]
         widgets = {
             'fecha_nacimiento': forms.DateInput(attrs={'type': 'date'}),
-            'telefono': forms.TextInput(attrs={'maxlength': '10', 'type': 'number'}),
+            'telefono': forms.TextInput(attrs={
+            'class': 'form-control',
+            'maxlength': '10'
+        }),
             'email': forms.EmailInput(),
         }
 
