@@ -51,11 +51,20 @@ class PacienteForm(forms.ModelForm):
                 raise ValidationError("El Apellido Materno no debe contener caracteres especiales.")
         return apellido_materno
         
-
     def clean_nombre(self):
+        valid_chars = set('ABCDEFGHIJKLMNOPQRSTUVWXYZÑÁÉÍÓÚÜ')
+        
         nombre = self.cleaned_data.get('nombre')
         if not nombre:
-            raise forms.ValidationError("El nombre es obligatorio.")
+            raise ValidationError("El Nombre es obligatorio.")
+        
+        nombre = nombre.strip()
+        if len(nombre) < 3:
+            raise ValidationError("El Nombre debe tener al menos 3 caracteres.")
+        
+        for char in nombre:
+            if char.upper() not in valid_chars and char != " ":
+                raise ValidationError("El Nombre no debe contener caracteres especiales.")
         return nombre
 
     def clean_fecha_nacimiento(self):
