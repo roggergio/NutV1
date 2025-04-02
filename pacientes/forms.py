@@ -81,35 +81,12 @@ class PacienteForm(forms.ModelForm):
         email = self.cleaned_data.get('email')
         if not email:
             raise forms.ValidationError("El email es obligatorio.")
-
-        # Si el formulario está editando un paciente existente
-        if self.instance and self.instance.pk:
-            if Paciente.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
-                raise forms.ValidationError("Este email ya está registrado para otro paciente.")
-        else:
-            if Paciente.objects.filter(email=email).exists():
-                raise forms.ValidationError("Este email ya está registrado para otro paciente.")
-
         return email
 
-
-    def clean_genero(self):
-        genero = self.cleaned_data.get('genero')
-        if not genero:
-            raise forms.ValidationError("El género es obligatorio.")
-        return genero
-    
-    
-    
-class AntropometriaForm(forms.ModelForm):
-    class Meta:
-        model = Antropometria
-        fields = ['peso', 'estatura', 'cintura', 'cadera', 'grasa_corporal', 'masa_muscular']
-        widgets = {
-            'peso': forms.NumberInput(attrs={'step': '0.01'}),
-            'estatura': forms.NumberInput(attrs={'step': '0.1'}),
-            'cintura': forms.NumberInput(attrs={'step': '0.1'}),
-            'cadera': forms.NumberInput(attrs={'step': '0.1'}),
-            'grasa_corporal': forms.NumberInput(attrs={'step': '0.1'}),
-            'masa_muscular': forms.NumberInput(attrs={'step': '0.1'}),
-        }
+    def clean_motivo_consulta(self):
+        motivo_consulta = self.cleaned_data.get('motivo_consulta')
+        if not motivo_consulta:
+            raise ValidationError("Debe incluir el motivo de la consulta.")
+        if len(motivo_consulta) <= 2:
+            raise ValidationError("El motivo de la consulta debe ser especifico.")
+        return motivo_consulta
