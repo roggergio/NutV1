@@ -5,18 +5,14 @@ from .models import Paciente
 class PacienteForm(forms.ModelForm):
     class Meta:
         model = Paciente
-        fields = [
-            'apellido_paterno', 'apellido_materno', 'nombre', 'fecha_nacimiento', 'telefono', 'email',
-            'motivo_consulta', 'genero', 'escolaridad', 'ocupacion',
-            'vegetariano', 'embarazo', 'deportista', 'adulto_mayor', 'pediatrico'
-        ]
+        fields = '__all__'
         widgets = {
             'fecha_nacimiento': forms.DateInput(attrs={'type': 'date'}),
             'telefono': forms.TextInput(attrs={
             'class': 'form-control',
             'maxlength': '10'
         }),
-            'email': forms.EmailInput(),
+            'email': forms.EmailInput()
         }
 
     def clean_apellido_paterno(self):
@@ -76,29 +72,21 @@ class PacienteForm(forms.ModelForm):
     def clean_telefono(self):
         telefono = self.cleaned_data.get('telefono')
         if not telefono:
-            raise forms.ValidationError("El número de teléfono es obligatorio.")
+            raise ValidationError("El número de teléfono es obligatorio.")
         if not telefono.isdigit() or len(telefono) != 10:
-            raise forms.ValidationError("El número de teléfono debe contener exactamente 10 dígitos numéricos.")
+            raise ValidationError("El número de teléfono debe contener exactamente 10 dígitos.")
         return telefono
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
         if not email:
             raise forms.ValidationError("El email es obligatorio.")
-
-        # Si el formulario está editando un paciente existente
-        if self.instance and self.instance.pk:
-            if Paciente.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
-                raise forms.ValidationError("Este email ya está registrado para otro paciente.")
-        else:
-            if Paciente.objects.filter(email=email).exists():
-                raise forms.ValidationError("Este email ya está registrado para otro paciente.")
-
         return email
 
-
-    def clean_genero(self):
-        genero = self.cleaned_data.get('genero')
-        if not genero:
-            raise forms.ValidationError("El género es obligatorio.")
-        return genero
+    def clean_motivo_consulta(self):
+        motivo_consulta = self.cleaned_data.get('motivo_consulta')
+        if not motivo_consulta:
+            raise ValidationError("Debe incluir el motivo de la consulta.")
+        if len(motivo_consulta) <= 2:
+            raise ValidationError("El motivo de la consulta debe ser especifico.")
+        return motivo_consulta
