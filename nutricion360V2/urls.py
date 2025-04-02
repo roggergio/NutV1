@@ -21,10 +21,12 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('accounts.urls')),
-    path('pacientes/', include('pacientes.urls')), 
+    path('pacientes/', include('pacientes.urls')),
+    path('antropometria/', include('antropometria.urls')),
     path('toxicomanias/', include('toxicomanias.urls')),
     path('alergias/', include('alergias.urls')),
     path('medicamentos/', include('medicamentos.urls')),
+    path('frecuencia/', include('frecuenciaAlimentaria.urls')),
 
     path('registroNutri', views.registroNutri, name='registroNutri'),
     path('price', views.price, name='price'),
