@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'alergias',
     'medicamentos',
     'frecuenciaAlimentaria',
+    'enfermedadesConsultar',
 ]
 
 MIDDLEWARE = [

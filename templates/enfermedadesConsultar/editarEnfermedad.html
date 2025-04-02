@@ -1,0 +1,22 @@
+{% extends 'baseConsultar.html' %}
+
+{% block title %}enfermedades{% endblock %}
+
+{% block content %}
+<article class="datos_generales bordes">
+    <h2>Editar enfermedad: {{ form.instance.nombre }}</h2>
+  
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Actualizar enfermedad</button>
+    </form>
+  
+    <br>
+  
+    <a href="{% url 'enfermedadesConsultar:listar_enfermedades' %}">
+      <button type="button">Volver a la lista</button>
+    </a>
+  </article>
+  
+  {% endblock %}
