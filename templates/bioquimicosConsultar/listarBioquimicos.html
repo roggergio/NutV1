@@ -1,0 +1,25 @@
+{% extends 'baseConsultar.html' %}
+
+{% block content %}
+<h2>Listado de Bioquímicos</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Valores de normalidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for bioquimico in bioquimicos %}
+        <tr>
+            <td>
+                <a href="{% url 'detalle_bioquimico' bioquimico.id %}">
+                    {{ bioquimico.nombre }}
+                </a>
+            </td>
+            <td>{{ bioquimico.valor_inferior_normal }} - {{ bioquimico.valor_superior_normal }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

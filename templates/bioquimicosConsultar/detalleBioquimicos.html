@@ -1,0 +1,16 @@
+{% extends 'baseConsultar.html' %}
+
+{% block content %}
+<h2>{{ bioquimico.nombre }}</h2>
+
+<div class="card p-3 shadow">
+    <p><strong>Descripción:</strong> {{ bioquimico.descripcion }}</p>
+    <p><strong>Valor Inferior de Normalidad:</strong> {{ bioquimico.valor_inferior_normal }}</p>
+    <p><strong>Valor Superior de Normalidad:</strong> {{ bioquimico.valor_superior_normal }}</p>
+    <p><strong>Tratamiento Deficiente:</strong> {{ bioquimico.tratamiento_deficiente }}</p>
+    <p><strong>Tratamiento Superior:</strong> {{ bioquimico.tratamiento_superior }}</p>
+    <p><strong>Bibliografía:</strong> {{ bioquimico.bibliografia }}</p>
+</div>
+
+<a href="{% url 'listar_bioquimicos' %}" class="btn btn-secondary mt-3">Volver al listado</a>
+{% endblock %}
