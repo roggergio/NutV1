@@ -1,33 +1,53 @@
+import re
 from django import forms
+from django.core.exceptions import ValidationError
 from .models import Toxicomania
 
 class ToxicomaniaForm(forms.ModelForm):
     class Meta:
         model = Toxicomania
         exclude = ['paciente']
+        widgets = {
+            'alcohol_veces': forms.TextInput(attrs={'type': 'text'}),
+            'tabaco_veces': forms.TextInput(attrs={'type': 'text'}),
+            'otro_veces': forms.TextInput(attrs={'type': 'text'}),
+        }
 
-    def clean(self):
-        cleaned_data = super().clean()
+    def clean_alcohol_veces(self):
+        return self.validar_veces('alcohol', 'alcohol_veces')
+    
+    def clean_tabaco_veces(self):
+        return self.validar_veces('tabaco', 'tabaco_veces')
 
-        alcohol = cleaned_data.get('alcohol')
-        tabaco = cleaned_data.get('tabaco')
-        otro_check = cleaned_data.get('otro_check')
+    def clean_otro_veces(self):
+        return self.validar_veces('otro_check', 'otro_veces')
 
-        def validar_campo(nombre_check, nombre_veces, nombre_frec, label):
-            if cleaned_data.get(nombre_check):
-                veces = cleaned_data.get(nombre_veces)
-                frecuencia = cleaned_data.get(nombre_frec)
+    def clean_otro(self):
+        return self.validar_otro_check('otro')
 
-                if veces is None or veces < 1:
-                    self.add_error(nombre_veces, f"El número de veces de {label} debe ser al menos 1.")
-                if not frecuencia or frecuencia == 'nunca':
-                    self.add_error(nombre_frec, f"Selecciona una frecuencia válida para {label}.")
+    def validar_veces(self, nombre_check, nombre_veces):
+        check = self.cleaned_data.get(nombre_check)
+        veces = self.cleaned_data.get(nombre_veces)
 
-        # ✅ Estas llamadas deben ir **dentro** de `clean`
-        validar_campo('alcohol', 'alcohol_veces', 'alcohol_frecuencia', 'alcohol')
-        validar_campo('tabaco', 'tabaco_veces', 'tabaco_frecuencia', 'tabaco')
-        validar_campo('otro_check', 'otro_veces', 'otro_frecuencia', 'otro')
+        if check:
+            if veces is None or not str(veces).isdigit() or int(veces) < 1:
+                raise ValidationError(f"El número de veces de {nombre_check} debe ser un número mayor a 0.")
+            return int(veces)
+        return veces
 
-        if not (alcohol or tabaco or otro_check):
-            raise forms.ValidationError("Debes seleccionar al menos una opción (alcohol, tabaco u otro).")
+    def validar_otro_check(self, nombre_campo):
+        valor = self.cleaned_data.get(nombre_campo)
+        if valor:
+            if not re.match(r'^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ ]+$', valor):
+                raise ValidationError(f"El campo {nombre_campo} solo puede contener letras y espacios, sin caracteres especiales.")
+            if len(valor) < 3:
+                raise ValidationError("El campo otro debe tener al menos 3 caracteres.")
+        return valor
 
+    #def validar_frecuencia(self, nombre_check, nombre_frec):
+    #    check = self.cleaned_data.get(nombre_check)
+    #    frecuencia = self.cleaned_data.get(nombre_frec)
+    #    
+    #    if check and (not frecuencia or frecuencia == 'nunca'):
+    #        raise ValidationError(f"Selecciona una frecuencia válida para {nombre_check}.")
+    #    return frecuencia
