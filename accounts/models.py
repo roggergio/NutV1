@@ -46,7 +46,7 @@ class Account(AbstractBaseUser):
     email = models.EmailField(max_length=100, unique=True)
     phone_number = models.CharField(
     max_length=10,
-    #validators=[RegexValidator(regex=r'^\+?1?\d{9,11}$', message="El número debe tener entre 9 y 15 dígitos y puede incluir '+' al inicio.")]
+    validators=[RegexValidator(regex=r'^\+?1?\d{9,11}$', message="El número debe tener entre 9 y 15 dígitos y puede incluir '+' al inicio.")]
 )
 
                                             #campos atributos de django

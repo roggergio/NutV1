@@ -41,7 +41,7 @@ def crear_paciente(request):
             return redirect('lista_pacientes')
     else:
         form = PacienteForm()
-    return render(request, 'pacientes/crear_paciente.html', {'form': form, 'paciente': None})
+    return render(request, 'pacientes/crear_paciente.html', {'form': form})
 
 @login_required
 def editar_paciente(request, paciente_id):

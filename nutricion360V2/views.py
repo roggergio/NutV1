@@ -13,7 +13,7 @@ def aside_1(request):
 def aside_2(request):
     return render(request, 'aside_2.html')
 def navBar(request):
-    return render(request, 'navBar.html')
+    return render(request, 'navBar.html') 
 
 
 def pacientesList(request):
