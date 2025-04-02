@@ -1,0 +1,48 @@
+{% extends 'baseConsultar.html' %}
+
+{% block title %}enfermedades{% endblock %}
+
+{% block content %}
+
+<article class="datos_generales bordes">
+  <h2>Enfermedades registradas</h2>
+
+  <a href="{% url 'enfermedadesConsultar:registrar_enfermedad' %}">
+    <button>Registrar nueva enfermedad</button>
+  </a>
+
+  <table border="1" cellpadding="10" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Tratamiento</th>
+        <th>Bibliografía</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for enfermedad in enfermedades %}
+        <tr>
+          <td>
+            <a href="{% url 'enfermedadesConsultar:editar_enfermedad' enfermedad.id %}">
+              {{ enfermedad.nombre }}
+            </a>
+          </td>
+          <td>{{ enfermedad.tratamiento_nut|truncatechars:50 }}</td>
+          <td>{{ enfermedad.bibliografia }}</td>
+          <td>
+            {% if enfermedad.link %}
+              <a href="{{ enfermedad.link }}" target="_blank">Ver</a>
+            {% else %}
+              No disponible
+            {% endif %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="4">No hay enfermedades registradas.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</article>
+
+  {% endblock %}

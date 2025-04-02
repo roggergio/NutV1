@@ -1,0 +1,14 @@
+{% extends 'baseConsultar.html' %}
+
+{% block title %}enfermedades{% endblock %}
+
+{% block content %}
+
+<article class="datos_generales bordes">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Guardar</button>
+    </form>
+  </article>
+  {% endblock %}
