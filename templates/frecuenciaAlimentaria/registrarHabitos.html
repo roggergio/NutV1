@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar Hábitos Alimentarios{% endblock %}
+
+{% block content %}
+<main>
+  <h2>Hábitos alimentarios de {{ paciente.nombre }}</h2>
+
+  <form method="POST">
+    {% csrf_token %}
+    <section class="datos_generales bordes">
+      <table>
+        <tr>
+          <th>Alimento</th>
+          <th>Cantidad</th>
+          <th>Frecuencia</th>
+        </tr>
+
+        {% for alimento in alimentos %}
+        <tr>
+            <td>{{ alimento }}</td>
+            <td>
+              <input type="range" name="{{ alimento }}_cantidad" min="0" max="10" value="0"
+                     oninput="updateFrecuencia(this, '{{ alimento }}')">
+              <output>0</output>
+            </td>
+            <td>
+              <select name="{{ alimento }}_frecuencia" id="select_{{ alimento }}">
+                <option value="dia">Día</option>
+                <option value="semana">Semana</option>
+                <option value="mes">Mes</option>
+                <option value="nunca" selected>Nunca</option>
+              </select>
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </section>
+
+    <div style="margin-top: 20px;">
+      <button type="submit">Guardar hábitos</button>
+    </div>
+  </form>
+</main>
+<script>
+    function updateFrecuencia(rangeInput, alimento) {
+      const cantidad = parseInt(rangeInput.value);
+      const output = rangeInput.nextElementSibling;
+      output.value = cantidad;
+  
+      const select = document.getElementById("select_" + alimento);
+      const opciones = Array.from(select.options);
+  
+      // Si cantidad > 0, deshabilitar opción "Nunca"
+      opciones.forEach(op => {
+        if (op.value === "nunca") {
+          op.disabled = cantidad > 0;
+          if (cantidad > 0 && select.value === "nunca") {
+            select.value = "dia"; // cambiar automáticamente
+          }
+        }
+      });
+    }
+  </script>
+  
+{% endblock %}

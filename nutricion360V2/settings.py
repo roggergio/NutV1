@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'toxicomanias',
     'alergias',
     'medicamentos',
+    'frecuenciaAlimentaria',
 ]
 
 MIDDLEWARE = [
