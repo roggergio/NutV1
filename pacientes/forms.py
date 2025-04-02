@@ -7,7 +7,8 @@ class PacienteForm(forms.ModelForm):
         model = Paciente
         exclude = ['nutriologo']
         widgets = {
-            'fecha_nacimiento': forms.DateInput(attrs={'type': 'date'}),
+            'fecha_nacimiento': forms.DateInput(attrs={'type': 'date'},
+                format='%Y-%m-%d'),
             'telefono': forms.TextInput(attrs={
             'class': 'form-control',
             'maxlength': '10'

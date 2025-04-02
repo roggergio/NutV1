@@ -5,26 +5,52 @@
 {% block content %}
 <main>
   <section class="derecha">
-    <br>
-    <br>
-    <br>
+    <br><br><br>
     <button> nuevo registro</button>
     <button>guardar</button>
     <button>editar</button>
     <button>eliminar</button>
-
   </section>
-    <article class="datos_generales bordes">
-        <form action="">
 
-            <p>id<input type="text"></p>
-            <p>enfermedad<input type="text"></p>
-            <p>descripción <textarea name="descripcion_enfer" id="" cols="30" rows="10"></textarea></p>
-            <p>tratamiento nutricional<textarea name="tratamiento_nut" id="" cols="30" rows="10"></textarea></p>
-            <p>bibliografía<input type="text"></p>
-            <p>link<input type="text"></p>
+  <article class="datos_generales bordes">
+    <form method="POST">
+      {% csrf_token %}
+      <p>id<input type="text" name="id"></p>
+      <p>enfermedad<input type="text" name="nombre"></p>
+      <p>descripción <textarea name="descripcion_enfer" cols="30" rows="10"></textarea></p>
+      <p>tratamiento nutricional<textarea name="tratamiento_nut" cols="30" rows="10"></textarea></p>
+      <p>bibliografía<input type="text" name="bibliografia"></p>
+      <p>link<input type="text" name="link"></p>
+    </form>
+  </article>
 
-        </form>
-    </article>
+  <!-- LISTADO DE ENFERMEDADES REGISTRADAS -->
+  <article class="listado_enfermedades bordes">
+    <h3>Enfermedades registradas</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Tratamiento</th>
+          <th>Bibliografía</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for enfermedad in enfermedades %}
+        <tr>
+          <td>{{ enfermedad.id }}</td>
+          <td>{{ enfermedad.nombre }}</td>
+          <td>{{ enfermedad.descripcion }}</td>
+          <td>{{ enfermedad.tratamiento }}</td>
+          <td>{{ enfermedad.bibliografia }}</td>
+          <td><a href="{{ enfermedad.link }}" target="_blank">Ver</a></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </article>
 </main>
 {% endblock %}
