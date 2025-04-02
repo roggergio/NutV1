@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Hábitos de {{ paciente.nombre }}{% endblock %}
+
+{% block content %}
+<main>
+  <h2>Hábitos alimentarios de {{ paciente.nombre }}</h2>
+  <a href="{% url 'frecuenciaAlimentaria:registrar_habitos' paciente.id %}">registrar hábitos</a>
+
+  {% if habitos %}
+    <table>
+      <thead>
+        <tr>
+          <th>Alimento</th>
+          <th>Cantidad</th>
+          <th>Frecuencia</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for habito in habitos %}
+        <tr>
+          <td>{{ habito.alimento }}</td>
+          <td>{{ habito.cantidad }}</td>
+          <td>{{ habito.get_frecuencia_display }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No hay hábitos alimentarios registrados para este paciente.</p>
+  {% endif %}
+</main>
+{% endblock %}
