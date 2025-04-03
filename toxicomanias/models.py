@@ -14,7 +14,6 @@ class Toxicomania(models.Model):
     
     alcohol = models.BooleanField(default=False)
     alcohol_veces = models.IntegerField(null=True, blank=True)
-    #alcohol_veces = models.CharField(max_length=10, null=True, blank=True)
     alcohol_frecuencia = models.CharField(max_length=10, choices=FRECUENCIA_CHOICES, default='nunca', blank=True)
     
     tabaco = models.BooleanField(default=False)

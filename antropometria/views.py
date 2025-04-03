@@ -37,7 +37,7 @@ def registrar_antropometria(request, paciente_id):
         if peso is None or estatura is None:
             return render(request, 'antropometria.html', {
                 'paciente': paciente,
-                'error': 'Peso y estatura son obligatorios y deben ser números.'
+                'error': 'El Peso y la estatura son obligatorios.'
             })
 
         imc = peso / ((estatura / 100) ** 2)

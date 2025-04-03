@@ -4,7 +4,7 @@
 
 {% block content %}
 <section class="datos_generales bordes">
-  <form method="POST" action="{% url 'registrar_antropometria' paciente.id %}">
+  <form method="POST" action="{% url 'registrar_antropometria' paciente.id %}" novalidate>
     {% csrf_token %}
     <h3>Antropometría</h3>
 
