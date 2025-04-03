@@ -4,7 +4,9 @@ from .forms import AlergiaForm
 from pacientes.models import Paciente
 from django.http import Http404
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def lista_alergias(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
     if paciente.nutriologo != request.user:
@@ -12,6 +14,7 @@ def lista_alergias(request, paciente_id):
     alergias = paciente.alergias.all()
     return render(request, 'alergias/lista_alergias.html', {'paciente': paciente, 'alergias': alergias})
 
+@login_required
 def agregar_alergia(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
 
@@ -34,6 +37,7 @@ def agregar_alergia(request, paciente_id):
     })
 
 
+@login_required
 def editar_alergia(request, paciente_id, alergia_id):
     alergia = get_object_or_404(Alergia, id=alergia_id, paciente__id=paciente_id)
     if paciente.nutriologo != request.user:
@@ -48,6 +52,7 @@ def editar_alergia(request, paciente_id, alergia_id):
         form = AlergiaForm(instance=alergia)
     return render(request, 'alergias/form_alergia.html', {'form': form, 'paciente': paciente})
 
+@login_required
 def eliminar_alergia(request, paciente_id, alergia_id):
     alergia = get_object_or_404(Alergia, id=alergia_id, paciente__id=paciente_id)
     

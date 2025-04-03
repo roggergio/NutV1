@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Medicamento
 from pacientes.models import Paciente
 from django.core.exceptions import PermissionDenied
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def registrar_medicamentos(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
 
@@ -37,6 +39,7 @@ def registrar_medicamentos(request, paciente_id):
 
     return render(request, 'medicamentos/formulario_medicamentos.html', {'paciente': paciente})
 
+@login_required
 def lista_medicamentos(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
     if paciente.nutriologo != request.user:

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import HabitoAlimenticio
 from .forms import HabitoAlimenticioForm
 from pacientes.models import Paciente
+from django.contrib.auth.decorators import login_required
 
 ALIMENTOS = [
     "Verduras", "Frutas", "Pan Dulce", "Tortilla", "Avena",
@@ -10,6 +11,7 @@ ALIMENTOS = [
     "Refresco", "Agua de Sabor", "Galletas", "Alcohol"
 ]
 
+@login_required
 def registrar_habitos(request, paciente_id):
     paciente = Paciente.objects.get(id=paciente_id)
 
@@ -32,6 +34,7 @@ def registrar_habitos(request, paciente_id):
     }
     return render(request, 'frecuenciaAlimentaria/registrarHabitos.html', context)
 
+@login_required
 def ver_habitos(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
     habitos = HabitoAlimenticio.objects.filter(paciente=paciente).order_by('alimento')

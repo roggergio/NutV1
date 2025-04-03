@@ -4,7 +4,9 @@ from pacientes.models import Paciente
 from django.core.exceptions import PermissionDenied
 from datetime import date
 from .models import Toxicomania
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def registrar_toxicomanias(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
 

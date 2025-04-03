@@ -14,6 +14,7 @@ def to_decimal(value):
     except (TypeError, InvalidOperation):
         return None
 
+@login_required
 def registrar_antropometria(request, paciente_id):
     paciente = get_object_or_404(Paciente, id=paciente_id)
 
