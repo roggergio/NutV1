@@ -9,9 +9,9 @@ class Alergia(models.Model):
     ]
 
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='alergias')
-    nombre = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=100, blank=True, null=True)
     reaccion = models.TextField(blank=True, null=True)
-    gravedad = models.CharField(max_length=10, choices=GRAVEDAD_CHOICES)
+    gravedad = models.CharField(max_length=10, blank=True, choices=GRAVEDAD_CHOICES)
     fecha_diagnostico = models.DateField(blank=True, null=True)
 
     def __str__(self):

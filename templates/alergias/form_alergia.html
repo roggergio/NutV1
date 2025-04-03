@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Toxicomanías{% endblock %}
+{% block title %}Alergias{% endblock %}
 
 {% block content %}
 <h3>Alergias - {{ paciente.nombre }}</h3>
 <h2>Agregar alergia para {{ paciente.nombre }}</h2>
 
-<form method="post">
+<form method="post" novalidate>
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Guardar</button>
