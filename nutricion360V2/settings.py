@@ -78,6 +78,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'nutricion360V2.wsgi.application'
 AUTH_USER_MODEL = 'accounts.Account'
+LOGIN_URL = '/login/'                     # A dónde redirigir si NO está logueado
+LOGIN_REDIRECT_URL = '/login/'       # A dónde redirigir DESPUÉS de iniciar sesión
+LOGOUT_REDIRECT_URL = '/login/'          # A dónde redirigir DESPUÉS de cerrar sesión
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
