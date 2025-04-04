@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'medicamentos',
     'frecuenciaAlimentaria',
     'enfermedadesConsultar',
-    'bioquimicosConsultar'
+    'bioquimicosConsultar',
+    'antecedentesPatologicos',
 ]
 
 MIDDLEWARE = [

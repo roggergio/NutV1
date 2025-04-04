@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h3>Antecedentes Patológicos</h3>
+
+<form method="post">
+  {% csrf_token %}
+
+  <table border="1">
+    <tr>
+      <th>Enfermedad</th>
+      {% for familiar in familiares %}
+      <th>{{ familiar.1 }}</th>
+      {% endfor %}
+    </tr>
+
+    {% for enfermedad in enfermedades_estado %}
+    <tr>
+      <td>{{ enfermedad.label }}</td>
+      {% for familiar in enfermedad.familiares %}
+      <td>
+        <input type="checkbox"
+               name="{{ enfermedad.name }}_{{ familiar.clave }}"
+               {% if familiar.checked %}checked{% endif %}>
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+
+  <button type="submit">Guardar</button>
+</form>
+{% endblock %}

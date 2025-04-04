@@ -8,10 +8,10 @@
   <h5>lea la enfermedad y pregunte al paciente si la ha padecido o alguno de sus antecesores</h5>
 
     <section class="datos_generales bordes">
-      <form action="">
-        <table>
+      <form action="" method="post">
+        <table id="tabla-enfermedades" border="1">
           <tr>
-            <th>enfermedad</th>
+            <th>Enfermedad</th>
             <th>Paciente</th>
             <th>Padre</th>
             <th>Madre</th>
@@ -19,147 +19,75 @@
             <th>Abuelos maternos</th>
             <th>Hermanos</th>
           </tr>
+          <!-- Enfermedades base -->
           <tr>
             <td>Diabetes</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
+            <td><input type="checkbox" name="diabetes_paciente"></td>
+            <td><input type="checkbox" name="diabetes_padre"></td>
+            <td><input type="checkbox" name="diabetes_madre"></td>
+            <td><input type="checkbox" name="diabetes_abuelos_p"></td>
+            <td><input type="checkbox" name="diabetes_abuelos_m"></td>
+            <td><input type="checkbox" name="diabetes_hermanos"></td>
           </tr>
           <tr>
             <td>Hipertensión</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
+            <td><input type="checkbox" name="hipertension_paciente"></td>
+            <td><input type="checkbox" name="hipertension_padre"></td>
+            <td><input type="checkbox" name="hipertension_madre"></td>
+            <td><input type="checkbox" name="hipertension_abuelos_p"></td>
+            <td><input type="checkbox" name="hipertension_abuelos_m"></td>
+            <td><input type="checkbox" name="hipertension_hermanos"></td>
           </tr>
           <tr>
             <td>Colesterolemia</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-
+            <td><input type="checkbox" name="colesterol_paciente"></td>
+            <td><input type="checkbox" name="colesterol_padre"></td>
+            <td><input type="checkbox" name="colesterol_madre"></td>
+            <td><input type="checkbox" name="colesterol_abuelos_p"></td>
+            <td><input type="checkbox" name="colesterol_abuelos_m"></td>
+            <td><input type="checkbox" name="colesterol_hermanos"></td>
           </tr>
           <tr>
             <td>Trigliceridemia</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-
+            <td><input type="checkbox" name="trigliceridos_paciente"></td>
+            <td><input type="checkbox" name="trigliceridos_padre"></td>
+            <td><input type="checkbox" name="trigliceridos_madre"></td>
+            <td><input type="checkbox" name="trigliceridos_abuelos_p"></td>
+            <td><input type="checkbox" name="trigliceridos_abuelos_m"></td>
+            <td><input type="checkbox" name="trigliceridos_hermanos"></td>
           </tr>
           <tr>
             <td>Obesidad</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
+            <td><input type="checkbox" name="obesidad_paciente"></td>
+            <td><input type="checkbox" name="obesidad_padre"></td>
+            <td><input type="checkbox" name="obesidad_madre"></td>
+            <td><input type="checkbox" name="obesidad_abuelos_p"></td>
+            <td><input type="checkbox" name="obesidad_abuelos_m"></td>
+            <td><input type="checkbox" name="obesidad_hermanos"></td>
           </tr>
-          <tr>
-            <td>Cáncer</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>Anemia</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>Hepatopatías</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
-          <tr>
-
-            <td>Osteoporosis</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>Nefropatías</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>Hipotiroidismo</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>Hipertiroidismo</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>Cardiovascular</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
-          <tr>
-            <td><input type="text">otra</td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-            <td><input type="checkbox"></td>
-          </tr>
+        </table>
+      
+        <br>
+        <button type="button" onclick="agregarEnfermedad()">+ Agregar otra enfermedad</button>
       </form>
-
-
-
-  <script>
-    const toggleButton = document.getElementById("toggleButton");
-    const sidebar = document.querySelector(".sidebar");
-
-    toggleButton.addEventListener("click", () => {
-        sidebar.classList.toggle("collapsed");
-    });
-  </script>
+      
+      <script>
+      function agregarEnfermedad() {
+        const tabla = document.getElementById("tabla-enfermedades");
+        const fila = tabla.insertRow(-1);
+        
+        // Celda con input para nueva enfermedad
+        const celdaEnfermedad = fila.insertCell(0);
+        celdaEnfermedad.innerHTML = '<input type="text" name="nueva_enfermedad[]" placeholder="Otra enfermedad">';
+        
+        // Checkboxes para cada familiar
+        for (let i = 0; i < 6; i++) {
+          const celda = fila.insertCell(i + 1);
+          celda.innerHTML = '<input type="checkbox" name="nueva_enfermedad_checkbox[]">';
+        }
+      }
+      </script>
+      
 
 </main>
 {% endblock %}

@@ -29,6 +29,8 @@ urlpatterns = [
     path('frecuencia/', include('frecuenciaAlimentaria.urls')),
     path('enfermedades/', include('enfermedadesConsultar.urls')),
     path('bioquimicos/', include('bioquimicosConsultar.urls')),
+    path('antecedentes/', include('antecedentesPatologicos.urls')),
+
 
     path('registroNutri', views.registroNutri, name='registroNutri'),
     path('price', views.price, name='price'),
