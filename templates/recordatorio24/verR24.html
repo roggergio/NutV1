@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Recordatorio 24 horas de {{ paciente.nombre }} {{ paciente.apellido_paterno }}</h2>
+
+{% if registros %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Horario</th>
+                <th>Descripción</th>
+                <th>Observaciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registro in registros %}
+            <tr>
+                <td>{{ registro.fecha }}</td>
+                <td>{{ registro.horario }}</td>
+                <td>{{ registro.descripcion }}</td>
+                <td>{{ registro.observaciones }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No hay registros de R24 para este paciente.</p>
+{% endif %}
+
+<a href="{% url 'registrar_r24' paciente.id %}">Agregar nuevo R24</a>
+{% endblock %}

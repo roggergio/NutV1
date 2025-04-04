@@ -30,6 +30,7 @@ urlpatterns = [
     path('enfermedades/', include('enfermedadesConsultar.urls')),
     path('bioquimicos/', include('bioquimicosConsultar.urls')),
     path('antecedentes/', include('antecedentesPatologicos.urls')),
+    path('recordatorio24/', include('recordatorio24.urls')),
 
 
     path('registroNutri', views.registroNutri, name='registroNutri'),

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'enfermedadesConsultar',
     'bioquimicosConsultar',
     'antecedentesPatologicos',
+    'recordatorio24',
 ]
 
 MIDDLEWARE = [
