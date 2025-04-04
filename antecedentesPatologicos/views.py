@@ -53,7 +53,7 @@ def registrar_antecedentes(request, paciente_id):
 
         return redirect('detalle_paciente', paciente_id=paciente.id)
 
-    # 🔄 Construir una lista con todas las enfermedades + familiares + si están marcados
+    # Enfermedades base marcadas
     enfermedades_estado = []
     for enfermedad in enfermedades_base:
         estado = getattr(antecedentes, enfermedad["name"], {})
@@ -67,9 +67,22 @@ def registrar_antecedentes(request, paciente_id):
         }
         enfermedades_estado.append(fila)
 
+    # Otras enfermedades marcadas
+    otras_enfermedades_estado = []
+    for otra in antecedentes.otras_enfermedades.all():
+        fila = {
+            "nombre": otra.nombre,
+            "familiares": [
+                {"clave": f[0], "etiqueta": f[1], "checked": otra.presencia.get(f[0], False)}
+                for f in familiares
+            ]
+        }
+        otras_enfermedades_estado.append(fila)
+
     return render(request, 'antecedentesPatologicos/formularioAntecedentes.html', {
         'paciente': paciente,
         'antecedentes': antecedentes,
         'enfermedades_estado': enfermedades_estado,
+        'otras_enfermedades_estado': otras_enfermedades_estado,
         'familiares': familiares,
     })

@@ -28,6 +28,52 @@
     {% endfor %}
   </table>
 
+  <h5>Otras enfermedades </h5>
+
+  <table id="tabla-otras" border="1">
+    <tr>
+      <th>Nombre</th>
+      {% for familiar in familiares %}
+      <th>{{ familiar.1 }}</th>
+      {% endfor %}
+    </tr>
+
+    {% for otra in otras_enfermedades_estado %}
+    <tr>
+      <td><input type="text" name="otra_nombre[]" value="{{ otra.nombre }}"></td>
+      {% for familiar in otra.familiares %}
+      <td>
+        <input type="checkbox"
+               name="otra_{{ familiar.clave }}_{{ forloop.parentloop.counter0 }}"
+               {% if familiar.checked %}checked{% endif %}>
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
+
+  <button type="button" onclick="agregarOtraEnfermedad()">+ Agregar otra enfermedad</button>
+  <br><br>
   <button type="submit">Guardar</button>
 </form>
+
+<script>
+  let contadorOtra = {{ otras_enfermedades_estado|length|default:0 }};
+
+  function agregarOtraEnfermedad() {
+    const tabla = document.getElementById("tabla-otras");
+    const fila = tabla.insertRow(-1);
+    const familiares = ['paciente', 'padre', 'madre', 'abuelos_paternos', 'abuelos_maternos', 'hermanos'];
+
+    const celdaNombre = fila.insertCell(0);
+    celdaNombre.innerHTML = '<input type="text" name="otra_nombre[]">';
+
+    familiares.forEach(familiar => {
+      const celda = fila.insertCell();
+      celda.innerHTML = `<input type="checkbox" name="otra_${familiar}_${contadorOtra}">`;
+    });
+
+    contadorOtra += 1;
+  }
+</script>
 {% endblock %}
